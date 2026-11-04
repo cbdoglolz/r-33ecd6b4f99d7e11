@@ -6,6 +6,18 @@
 
 本仓库按用户确认采用公开发布。随机名称和中性描述用于降低偶然发现概率；它们不提供访问控制，也不能保证无法被搜索到。报告 HTML 声明 noindex/nofollow/noarchive，仅是对遵守该标记的搜索引擎的请求。仓库代码、历史、快照和 Pages 仍公开可读。
 
+## 使用地址
+
+默认订阅，在播放器的订阅/配置地址中填写：
+
+```text
+https://cbdoglolz.github.io/r-33ecd6b4f99d7e11/content.json
+```
+
+[全量订阅](https://cbdoglolz.github.io/r-33ecd6b4f99d7e11/tvbox.json) · [结构化报告](https://cbdoglolz.github.io/r-33ecd6b4f99d7e11/report.json) · [可读报告](https://cbdoglolz.github.io/r-33ecd6b4f99d7e11/report.html)。
+
+2026-11-04 首次公开部署的[完整构建、快照及线上验证记录](https://github.com/cbdoglolz/r-33ecd6b4f99d7e11/actions/runs/41829312565)已成功，四个 JSON 的 HTTP 200、响应类型、数据与版本一致性检查通过。默认订阅 288 个入口，全量 301 个入口；这些计数以每轮真实构建为准。尚未完成电视设备播放测试。
+
 ## 自动更新
 
 工作流 [`Refresh`](https://github.com/cbdoglolz/r-33ecd6b4f99d7e11/actions/workflows/update.yml) 每天 UTC `02:17 / 14:17`（北京时间 `10:17 / 22:17`）检查四源，也可在 Actions → Refresh → Run workflow 手动运行。日常无需手动更新。修改构建代码、来源或测试后会自动构建；PR 只执行离线测试，没有发布权限。
