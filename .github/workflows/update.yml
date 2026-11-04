@@ -24,7 +24,7 @@ concurrency:
 
 jobs:
   build:
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-24.04
     timeout-minutes: 12
     outputs:
       changed: ${{ steps.build.outputs.changed }}
@@ -35,7 +35,7 @@ jobs:
           persist-credentials: false
       - uses: actions/setup-python@a26af69be951a213d495a4c3e4e4022e16d87065 # v5
         with:
-          python-version: '3.12.8'
+          python-version: '3.12.16'
       - name: Static checks and regression tests (stdlib only)
         run: |
           python -m compileall -q build.py scripts tests
@@ -95,7 +95,7 @@ jobs:
   snapshot:
     needs: build
     if: needs.build.outputs.changed == 'true' && !inputs.restore_snapshot && github.event_name != 'pull_request'
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-24.04
     timeout-minutes: 8
     permissions:
       contents: write
@@ -105,7 +105,7 @@ jobs:
           persist-credentials: false
       - uses: actions/setup-python@a26af69be951a213d495a4c3e4e4022e16d87065 # v5
         with:
-          python-version: '3.12.8'
+          python-version: '3.12.16'
       - uses: actions/download-artifact@d3f86a106a0bac45b974a628896c90dbdf5c8093 # v4
         with:
           name: complete-${{ github.run_id }}
@@ -121,7 +121,7 @@ jobs:
       always() && needs.build.result == 'success' && needs.build.outputs.changed == 'true' &&
       (needs.snapshot.result == 'success' || (inputs.restore_snapshot && needs.snapshot.result == 'skipped')) &&
       vars.PAGES_ENABLED == 'true' && github.event_name != 'pull_request'
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-24.04
     timeout-minutes: 10
     permissions:
       contents: read
@@ -139,7 +139,7 @@ jobs:
           persist-credentials: false
       - uses: actions/setup-python@a26af69be951a213d495a4c3e4e4022e16d87065 # v5
         with:
-          python-version: '3.12.8'
+          python-version: '3.12.16'
       - name: Verify published JSON and version (retry CDN propagation)
         env:
           PAGE_URL: ${{ steps.deployment.outputs.page_url }}

@@ -34,7 +34,7 @@ Pages 未启用时，在成功 Actions 运行的 Artifacts 下载 `complete-运�
 
 ## 本地运行与检查
 
-固定 CI Python `3.12.8`，无第三方 Python 运行依赖，无需 pip 安装。Actions 的依赖均固定到完整提交 SHA。
+固定 CI Ubuntu `24.04` + Python `3.12.16`（已核对官方构建清单），无第三方 Python 运行依赖，无需 pip 安装。Actions 的依赖均固定到完整提交 SHA。固定 runner 避免 ubuntu-latest 升级后旧解释器没有匹配构建。
 
 ```powershell
 python -m unittest discover -s tests -v
