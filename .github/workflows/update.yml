@@ -11,7 +11,7 @@ on:
     - cron: '17 2,14 * * *'
   push:
     branches: [main]
-    paths: ['build.py', 'sources.json', 'scripts/**', 'tests/**', '.github/workflows/update.yml']
+    paths: ['build.py', 'catalog.py', 'sources.json', 'scripts/**', 'tests/**', '.github/workflows/update.yml']
   pull_request:
     branches: [main]
 
@@ -29,6 +29,7 @@ jobs:
     outputs:
       changed: ${{ steps.build.outputs.changed }}
       version: ${{ steps.build.outputs.version }}
+      publish_needed: ${{ steps.publish.outputs.publish_needed }}
     steps:
       - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262 # v4
         with:
@@ -38,7 +39,7 @@ jobs:
           python-version: '3.12.16'
       - name: Static checks and regression tests (stdlib only)
         run: |
-          python -m compileall -q build.py scripts tests
+          python -m compileall -q build.py catalog.py scripts tests
           python -m unittest discover -s tests -v
       - name: Restore durable last-good
         if: github.event_name != 'pull_request'
@@ -61,14 +62,33 @@ jobs:
           else
             python build.py --last-good .last-good/public
           fi
+      - name: Decide whether complete content still needs publication
+        if: github.event_name != 'pull_request'
+        id: publish
+        env:
+          CONFIG_CHANGED: ${{ steps.build.outputs.changed }}
+          PAGES_ENABLED: ${{ vars.PAGES_ENABLED }}
+        run: python scripts/publish_gate.py
       - name: Show successful check in job summary
         if: github.event_name != 'pull_request'
         env:
           CHANGED: ${{ steps.build.outputs.changed }}
         run: |
           python -c 'import os; from pathlib import Path; p=Path("build-state.json"); text=p.read_text() if p.exists() else "Restored reviewed snapshot"; Path(os.environ["GITHUB_STEP_SUMMARY"]).write_text("## 配置检查\n\n```json\n"+text+"\n```\n\n无内容变化时不提交快照、不重发 Pages。公开状态以仓库设置为准。\n")'
+      - name: Save latest check evidence even when nothing changed
+        if: always() && github.event_name != 'pull_request'
+        uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02 # v4
+        with:
+          name: check-${{ github.run_id }}
+          path: |
+            build-state.json
+            publication-decision.json
+            .last-good/recovered-snapshot.json
+          include-hidden-files: true
+          retention-days: 30
+          if-no-files-found: ignore
       - name: Upload complete recoverable bundle
-        if: steps.build.outputs.changed == 'true'
+        if: steps.build.outputs.changed == 'true' || steps.publish.outputs.publish_needed == 'true'
         uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02 # v4
         with:
           name: complete-${{ github.run_id }}
@@ -79,7 +99,7 @@ jobs:
           retention-days: 90
           if-no-files-found: error
       - name: Upload Pages artifact
-        if: steps.build.outputs.changed == 'true' && vars.PAGES_ENABLED == 'true'
+        if: steps.publish.outputs.publish_needed == 'true'
         uses: actions/upload-pages-artifact@56afc609e74202658d3ffba0e8f6dda462b719fa # v3
         with:
           path: public
@@ -118,8 +138,9 @@ jobs:
   deploy:
     needs: [build, snapshot]
     if: >-
-      always() && needs.build.result == 'success' && needs.build.outputs.changed == 'true' &&
-      (needs.snapshot.result == 'success' || (inputs.restore_snapshot && needs.snapshot.result == 'skipped')) &&
+      always() && needs.build.result == 'success' && needs.build.outputs.publish_needed == 'true' &&
+      (needs.snapshot.result == 'success' || (needs.snapshot.result == 'skipped' &&
+      (inputs.restore_snapshot || needs.build.outputs.changed == 'false'))) &&
       vars.PAGES_ENABLED == 'true' && github.event_name != 'pull_request'
     runs-on: ubuntu-24.04
     timeout-minutes: 10

@@ -19,8 +19,9 @@ import time
 import urllib.error
 import urllib.parse
 import urllib.request
+import catalog
 
-VERSION = '1.0.0'
+VERSION = '1.1.0'
 MAX_BYTES = 4 * 1024 * 1024
 MAX_CONFIGS = 24
 MAX_DEPTH = 3
@@ -202,7 +203,8 @@ def expand_source(spec, loader=fetch):
             total = sum(len(doc['sites']) for doc, _ in documents)
             if not total:
                 raise BuildError('源展开后无站点')
-            return {'source_id': spec['id'], 'requested_url': spec['url'], 'used_url': documents[-1][1]['used_url'],
+            return {'source_id': spec['id'], 'source_label': spec.get('label', spec['id']),
+                    'requested_url': spec['url'], 'used_url': documents[-1][1]['used_url'],
                     'fallback': index > 0, 'fetched_at': now(), 'upstream_sites': total, 'status': 'ok',
                     'failure_reason': None, 'attempts': attempts, 'documents': [r for _, r in documents],
                     'sha256': documents[-1][1]['sha256']}, documents, raw
@@ -283,7 +285,7 @@ def walk_strings(value, path=''):
         yield path, value
 
 
-def merge(results):
+def merge(results, previous_manifest=None):
     entries, seen, removed, renames, excluded, globals_report = [], {}, [], [], [], []
     occupied = set()
     for source, documents, _ in results:
@@ -303,7 +305,8 @@ def merge(results):
                 # Source parser-global context is considered even though it is deliberately not merged.
                 parser_context = {k: doc[k] for k in ('parses', 'flags', 'rules', 'ijk', 'hosts', 'proxy', 'doh') if k in doc}
                 fingerprint = digest({'site': behavior(site), 'parser_context': parser_context})
-                context = {'source_id': source['source_id'], 'requested_url': source['requested_url'],
+                context = {'source_id': source['source_id'], 'source_label': source.get('source_label', source['source_id']),
+                           'requested_url': source['requested_url'],
                            'used_url': base, 'original_key': original['key'], 'original_name': original['name'],
                            'type': original['type'], 'engine': engine(site), 'jar': site.get('jar'),
                            'behavior_sha256': fingerprint}
@@ -327,18 +330,16 @@ def merge(results):
                     excluded.append({'key': stable_key, 'name': site['name'], 'reason': tool_reason})
                 entries.append((site, context))
                 seen[fingerprint] = site
-    # Source/engine labels can still collide within one source; add a host/class and short ID.
-    display_groups = {}
-    for site, ctx in entries:
-        display_groups.setdefault(site['name'], []).append((site, ctx))
-    rename_by_key = {r['new_key']: r for r in renames}
-    for group in display_groups.values():
-        if len(group) > 1:
-            for site, ctx in group:
-                label = urllib.parse.urlsplit(site['api']).hostname or site['api'].rsplit('/', 1)[-1]
-                site['name'] += f' · {label}#{ctx["behavior_sha256"][:6]}'
-                ctx['name'] = site['name']
-                rename_by_key[site['key']]['new_name'] = site['name']
+    entries, registry, key_map, identity = catalog.organize(entries, previous_manifest)
+    by_key = {site['key']: site for site, _ in entries}
+    for row in renames:
+        row['new_key'] = key_map[row['new_key']]
+        row['new_name'] = by_key[row['new_key']]['name']
+    for row in removed:
+        row['kept_key'] = key_map[row['kept_key']]
+    for row in excluded:
+        row['key'] = key_map[row['key']]
+        row['name'] = by_key[row['key']]['name']
     names, variants = {}, {}
     for site, ctx in entries:
         names.setdefault(ctx['original_name'].casefold(), []).append(ctx)
@@ -388,7 +389,7 @@ def merge(results):
         'removed_duplicates': removed, 'kept_variants': kept_variants, 'name_collisions': collisions,
         'key_renames': renames, 'hidden_tools': excluded, 'global_fields': globals_report,
         'dependencies': list(deps.values()), 'http_references': http_refs, 'local_references': local_refs,
-        'unresolved_references': unresolved}
+        'unresolved_references': unresolved, 'identity': identity, 'identity_registry': registry}
 
 
 def validate_output(directory):
@@ -408,6 +409,10 @@ def validate_output(directory):
         raise BuildError('内容订阅与清单不一致')
     if {s['key'] for s in tvbox['sites']} != {s['key'] for s in manifest['sites']}:
         raise BuildError('全量订阅与清单不一致')
+    if 'identity_registry' in manifest:
+        registry = manifest['identity_registry']
+        if len({r['key'] for r in registry}) != len(registry) or {r['key'] for r in registry if r['active']} != {s['key'] for s in tvbox['sites']}:
+            raise BuildError('持久标识清单与站点不一致')
     if any(s['status'] != 'ok' for s in report['sources']):
         raise BuildError('包含失败来源')
     if counts['raw'] != sum(s['upstream_sites'] for s in report['sources']):
@@ -423,12 +428,20 @@ def validate_output(directory):
 def render_report(report):
     counts = report['counts']
     rows = ''.join(f'<tr><td>{html.escape(s["source_id"])}</td><td>{s["upstream_sites"]}</td><td>{html.escape(s["used_url"])}</td><td>{s["fallback"]}</td></tr>' for s in report['sources'])
-    summary = {k: report[k] for k in ('counts', 'hidden_tools', 'removed_duplicates', 'name_collisions', 'kept_variants', 'global_fields')}
+    summary = {k: report[k] for k in ('counts', 'hidden_tools', 'removed_duplicates', 'name_collisions', 'kept_variants', 'global_fields', 'changes')}
+    identity = report['identity']
+    changes = report['changes']
+    workflow = report['automation'].get('workflow_url')
+    check_link = f'<a href="{html.escape(workflow)}">最近检查结果与手动更新</a>' if workflow else 'GitHub Actions 的 Refresh 工作流'
     return f'''<!doctype html><html lang="zh-CN"><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="robots" content="noindex,nofollow,noarchive"><title>配置检查报告</title>
 <style>body{{font:16px system-ui;max-width:1100px;margin:2em auto;padding:1em;line-height:1.7}}table{{border-collapse:collapse;width:100%}}td,th{{border:1px solid #bbb;padding:.5em;overflow-wrap:anywhere}}pre{{white-space:pre-wrap;overflow-wrap:anywhere}}a{{color:#1465b0}}</style>
 <h1>配置检查报告</h1><p>版本 {html.escape(report['version'])} · 最近成功生成 {report['last_success_at']}</p>
 <p>原始 {counts['raw']}，精确去重 {counts['removed']}，全量 {counts['retained']}，内容入口 {counts['content']}。</p>
+<p>沿用原标识 {identity['preserved']} 个，新标识 {identity['new']} 个，停用 {identity['retired']} 个。按来源和类型排列，同组保留原有顺序。</p>
+<p>本版新增 {len(changes['added'])} 项，调整 {len(changes['updated'])} 项，移除 {len(changes['removed'])} 项；完整逐项记录在下方详情和 report.json。</p>
 <p><a href="content.json">默认订阅 content.json</a> · <a href="tvbox.json">全量 tvbox.json</a> · <a href="report.json">详细报告</a> · <a href="manifest.json">来源清单</a></p>
+<table><tr><th>检查层级</th><th>本版状态</th></tr><tr><td>四源抓取、配置结构和数量一致性</td><td>通过</td></tr><tr><td>站点首页、分类和搜索接口</td><td>未逐站测试</td></tr><tr><td>电视实际播放</td><td>未实测</td></tr></table>
+<p>每天北京时间 10:17、22:17 计划检查，实际可能延迟。{check_link}。这里的时间是内容生成时间，无变化时不重发网页；最新检查时间请看工作流和 check-运行ID 附件。</p>
 <p>仅配置聚合，未执行第三方 JAR/JS/Python，未完成电视首页、搜索或播放测试。内容优先不代表安全审计。全局 hosts/proxy/doh/rules/ijk 等未合并，依赖这些全局设置的站点可能需要进一步适配。本站若发布到 Pages 将公开可读。</p>
 <table><tr><th>来源</th><th>站点</th><th>本次使用地址</th><th>备用源</th></tr>{rows}</table>
 <p>未审计远程可执行依赖 {len(report['dependencies'])} 个，HTTP 明文引用 {len(report['http_references'])} 处。所有依赖仅记录 URL；不是存活检测或安全认可。失败/最近检查时间请查看 Actions，本站保留最近成功版本。</p>
@@ -452,18 +465,30 @@ def build(specs, output, last_good=None, loader=fetch):
         save_json('failure.json', {'checked_at': now(), 'status': 'failed', 'failures': failures,
                                   'last_good_untouched': True})
         raise BuildError('至少一个源失败；保留最近成功产物，不生成残缺订阅', failures)
-    tvbox, content, manifest, details = merge(results)
     previous = validate_output(last_good) if last_good and Path(last_good).is_dir() else None
+    previous_manifest = json.loads((Path(last_good) / 'manifest.json').read_text(encoding='utf-8')) if previous else None
+    previous_catalog = json.loads((Path(last_good) / 'tvbox.json').read_text(encoding='utf-8')) if previous else None
+    tvbox, content, manifest, details = merge(results, previous_manifest)
+    registry = details.pop('identity_registry')
     if previous:
         counts = {s['source_id']: s['upstream_sites'] for s in previous['sources']}
         for source, _, _ in results:
             old_count = counts.get(source['source_id'], 0)
             if old_count and source['upstream_sites'] < old_count * 0.7:
                 raise BuildError('单源站点较最近成功版本减少超过 30%，拒绝自动发布，请审查上游变化')
-    code_hash = hashlib.sha256(Path(__file__).read_bytes()).hexdigest()
-    version = digest({'generator': code_hash, 'tvbox': tvbox, 'content': content, 'manifest': manifest})
+    code_hash = digest({name: (Path(__file__).parent / name).read_text(encoding='utf-8') for name in ('build.py', 'catalog.py')})
+    version = digest({'generator': code_hash, 'tvbox': tvbox, 'content': content,
+                      'manifest': manifest, 'identity_registry': registry})
     changed = previous is None or previous['version'] != version
-    state = {'changed': changed, 'version': version, 'checked_at': now()}
+    current_counts = {'raw': sum(s['upstream_sites'] for s, _, _ in results),
+                      'removed': len(details['removed_duplicates']), 'retained': len(tvbox['sites']),
+                      'content': len(content['sites']), 'hidden_tools': len(details['hidden_tools']),
+                      'different_jar_variant_groups': sum(g['different_jars'] for g in details['kept_variants']),
+                      'name_collision_groups': len(details['name_collisions'])}
+    state = {'status': 'success', 'changed': changed, 'version': version, 'checked_at': now(),
+             'counts': current_counts,
+             'source_checks': [{k: source[k] for k in ('source_id', 'status', 'upstream_sites', 'fallback')} for source, _, _ in results],
+             'verification': {'configuration': 'passed', 'site_api': 'not tested', 'device_playback': 'not tested'}}
     save_json('build-state.json', state)
     if not changed:
         return previous, False
@@ -472,19 +497,22 @@ def build(specs, output, last_good=None, loader=fetch):
     with tempfile.TemporaryDirectory(prefix='.stage-', dir=output.parent) as temp:
         stage = Path(temp) / 'public'
         stage.mkdir()
-        for name, value in [('tvbox.json', tvbox), ('content.json', content), ('manifest.json', {'version': version, 'sites': manifest})]:
+        for name, value in [('tvbox.json', tvbox), ('content.json', content),
+                            ('manifest.json', {'schema_version': 2, 'version': version, 'sites': manifest, 'identity_registry': registry})]:
             save_json(stage / name, value)
+        repository = os.environ.get('GITHUB_REPOSITORY', '')
+        workflow_url = f'https://github.com/{repository}/actions/workflows/update.yml' if re.fullmatch(r'[\w.-]+/[\w.-]+', repository) else None
         report = {'schema_version': 1, 'generator_version': VERSION, 'version': version,
                   'commit': os.environ.get('GITHUB_SHA', 'local'), 'generated_at': now(), 'last_success_at': now(),
                   'status': 'success', 'sources': [s for s, _, _ in results],
-                  'counts': {'raw': sum(s['upstream_sites'] for s, _, _ in results),
-                             'removed': len(details['removed_duplicates']), 'retained': len(tvbox['sites']),
-                             'content': len(content['sites']), 'hidden_tools': len(details['hidden_tools']),
-                             'different_jar_variant_groups': sum(g['different_jars'] for g in details['kept_variants']),
-                             'name_collision_groups': len(details['name_collisions'])},
+                  'counts': current_counts,
                   **details,
+                  'changes': catalog.compare(previous_catalog, tvbox, previous_manifest, manifest),
+                  'automation': {'cron_utc': '17 2,14 * * *', 'timezone_display': 'Asia/Shanghai',
+                                 'planned_times': ['10:17', '22:17'], 'workflow_url': workflow_url,
+                                 'latest_check': 'Actions check-<run_id> artifact; generation timestamp is not latest check'},
                   'verification': {'configuration': 'validated', 'dependencies': 'URL inventory only; not fetched or executed',
-                                   'device_home_category_search': 'not tested', 'playback': 'not tested'},
+                                   'site_api': 'not tested', 'device_home_category_search': 'not tested', 'playback': 'not tested'},
                   'file_sha256': {n: hashlib.sha256((stage / n).read_bytes()).hexdigest() for n in ('tvbox.json', 'content.json', 'manifest.json')}}
         save_json(stage / 'report.json', report)
         (stage / 'report.html').write_text(render_report(report), encoding='utf-8')
@@ -499,7 +527,7 @@ def build(specs, output, last_good=None, loader=fetch):
                 (raw_stage / name).write_bytes(data)
                 raw_hashes[name] = hashlib.sha256(data).hexdigest()
         save_json(raw_stage / 'checksums.json', raw_hashes)
-        # This directory is local / private Actions artifact; never included in Pages artifact.
+        # Local / Actions bundle only; never included in the Pages artifact.
         cache = Path('.snapshots')
         cache.mkdir(exist_ok=True)
         target_raw = cache / version
@@ -542,8 +570,10 @@ def main():
         print(canonical({'changed': changed, 'version': report['version'], 'counts': report['counts']}))
         return 0
     except Exception as exc:
-        save_json('failure.json', {'checked_at': now(), 'status': 'failed', 'reason': error_reason(exc),
-                                  'failures': getattr(exc, 'details', None), 'last_good_untouched': True})
+        failure = {'checked_at': now(), 'status': 'failed', 'reason': error_reason(exc),
+                   'failures': getattr(exc, 'details', None), 'last_good_untouched': True}
+        save_json('failure.json', failure)
+        save_json('build-state.json', failure)
         print('BUILD FAILED:', error_reason(exc))
         return 1
 

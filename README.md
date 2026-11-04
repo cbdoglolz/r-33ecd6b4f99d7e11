@@ -20,11 +20,13 @@ https://cbdoglolz.github.io/r-33ecd6b4f99d7e11/content.json
 
 ## 自动更新
 
+完整的简体中文说明见 [日常自动更新怎么工作](docs/automation.md)，包括播放器何时同步、标识保留、无变化检查、发布失败重试和回滚。
+
 工作流 [`Refresh`](https://github.com/cbdoglolz/r-33ecd6b4f99d7e11/actions/workflows/update.yml) 每天 UTC `02:17 / 14:17`（北京时间 `10:17 / 22:17`）检查四源，也可在 Actions → Refresh → Run workflow 手动运行。日常无需手动更新。修改构建代码、来源或测试后会自动构建；PR 只执行离线测试，没有发布权限。
 
-只有完整读取四源且全部校验通过，才生成新的成功版本。任意一源失败、空站点、非法路径、数量比最近成功版本下降超过 30% 都阻止自动更新，保持原 Pages 和成功快照。解析器和请求头等行为相同才能去重；只同名、同 key、同域名不足以去重。所有输出 key 都以来源 ID 开头，并包含行为指纹，重复 key 不会相互覆盖。相同输入生成相同 key；行为字段/来源全局上下文变化会改变指纹，相关收藏可能需重新选择。
+只有完整读取四源且全部校验通过，才生成新的成功版本。任意一源失败、空站点、非法路径、数量比最近成功版本下降超过 30% 都阻止自动更新，保持原 Pages 和成功快照。解析器和请求头等行为相同才能去重；只同名、同 key、同域名不足以去重。首次建立的 key 以来源 ID 和配置指纹区分；之后由持久标识清单优先沿用旧 key。来源 key 或对应关系明确时，参数、Header、JAR 等变化不再直接导致新 key；重复项无法明确对应时不猜配。首次升级参考旧清单，播放器收藏仍需实机确认。
 
-检查成功但内容无变化时，只记录 Actions 检查结果，不提交快照、不重发 Pages、不伪造活动。网页中的最近成功时间是**内容生成时间**；最近检查是否成功、距离上次检查多久，须看 Actions 的真实运行时间。程序版本变化也会生成新版本。可以从 Actions Summary 中看到内容是否发生变化。
+检查成功但内容无变化时，只记录 Actions 检查结果，不提交快照、不重发 Pages、不伪造活动。网页中的最近成功时间是**内容生成时间**；最近检查是否成功、距离上次检查多久，须看 Actions 的真实运行时间。程序版本变化也会生成新版本。可以从 Actions Summary 和 check-运行ID 附件看到本次检查结果。若完整版本已保存但上次发布失败，会比较线上版本并补做发布，不必等下一次内容变化。
 
 GitHub 的 schedule 不保证准点：高负载时可能延迟或跳过，只从默认分支运行，公开仓库长时间无活动（当前文档为 60 天）可能自动停用。不要把它当 100% 永久在线服务。请关注 [Actions 页面](https://github.com/cbdoglolz/r-33ecd6b4f99d7e11/actions)，在 GitHub 个人 Settings → Notifications 中启用 Actions 失败通知；这里没有额外创建 Issue 或发送邮件。建议关注最近成功检查是否超过 36 小时；停用后按 GitHub 界面的正常流程重新启用，禁止无意义机器人提交。
 
@@ -50,7 +52,7 @@ Pages 未启用时，在成功 Actions 运行的 Artifacts 下载 `complete-运�
 
 ```powershell
 python -m unittest discover -s tests -v
-python -m compileall -q build.py scripts tests
+python -m compileall -q build.py catalog.py scripts tests
 python build.py
 python build.py --validate public
 ```

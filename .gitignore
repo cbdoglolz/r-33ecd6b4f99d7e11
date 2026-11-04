@@ -7,6 +7,7 @@ public/
 .snapshots/
 failure.json
 build-state.json
+publication-decision.json
 .venv/
 .tools/
 pages-verification.json
