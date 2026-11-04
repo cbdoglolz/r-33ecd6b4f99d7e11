@@ -1,0 +1,14 @@
+{
+  "version": "5177e24410f43f84d3ccc2aa0031adb3c62404f4cfa8cf81dadd78b4c40be1bb",
+  "source_commit": "081681cd714895173f821f48bd995eec21115d75",
+  "generated_at": "2026-11-04T12:12:30+00:00",
+  "public_checksums": {
+    "content.json": "db0a22b77add6904441cdbbf468db19d4d97bafa281fed1cfab362ca182ea4bf",
+    "tvbox.json": "4f46f9cd50c548f25358e06814b50a74a1a576981aaed42d8179ccfe5a4da13f",
+    "report.json": "6154629f435a3ef53e41f2ecac709787642af2285cfc01b9f6ec66181be4bc4e",
+    "manifest.json": "c26505589935c7e91c3f6729a0ace08ad357536f6270427f947db046087cd3cd",
+    "report.html": "aca2f7d68b1984dd13d26ce20db16525eb2992e737911b0d8d3db2312fcbb8c9",
+    "index.html": "aca2f7d68b1984dd13d26ce20db16525eb2992e737911b0d8d3db2312fcbb8c9",
+    ".nojekyll": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  }
+}
