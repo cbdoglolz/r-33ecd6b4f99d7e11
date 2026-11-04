@@ -1,20 +1,20 @@
-# FongMi 四源订阅聚合（V1）
+# Configuration workspace
 
 把 `clun / wang / qist / pray` 四份订阅中的站点配置汇总为一条订阅。保留来源、请求参数和各站解析器，不运行来源代码，不下载影片、不代理影片、不记录观看历史。V1 不提供统一影片目录、统一分类、跨站索引或合并播放线路。
 
-仓库：<https://github.com/cbdoglolz/fongmi-tvbox-aggregator>。
+仓库：<https://github.com/cbdoglolz/r-33ecd6b4f99d7e11>。
 
-**当前为私有仓库。2026-11-04 实测创建 Pages 返回 HTTP 422：当前套餐不支持此私有仓库的 Pages。Pages 暂未上线，没有可填写的正式订阅 URL。未经用户确认，不会把仓库改为公开。**
+本仓库按用户确认采用公开发布。随机名称和中性描述用于降低偶然发现概率；它们不提供访问控制，也不能保证无法被搜索到。报告 HTML 声明 noindex/nofollow/noarchive，仅是对遵守该标记的搜索引擎的请求。仓库代码、历史、快照和 Pages 仍公开可读。
 
 ## 自动更新
 
-工作流 [`Aggregate and deploy`](https://github.com/cbdoglolz/fongmi-tvbox-aggregator/actions/workflows/update.yml) 每天 UTC `02:17 / 14:17`（北京时间 `10:17 / 22:17`）检查四源，也可在 Actions → Aggregate and deploy → Run workflow 手动运行。日常无需手动更新。修改构建代码、来源或测试后会自动构建；PR 只执行离线测试，没有发布权限。
+工作流 [`Refresh`](https://github.com/cbdoglolz/r-33ecd6b4f99d7e11/actions/workflows/update.yml) 每天 UTC `02:17 / 14:17`（北京时间 `10:17 / 22:17`）检查四源，也可在 Actions → Refresh → Run workflow 手动运行。日常无需手动更新。修改构建代码、来源或测试后会自动构建；PR 只执行离线测试，没有发布权限。
 
 只有完整读取四源且全部校验通过，才生成新的成功版本。任意一源失败、空站点、非法路径、数量比最近成功版本下降超过 30% 都阻止自动更新，保持原 Pages 和成功快照。解析器和请求头等行为相同才能去重；只同名、同 key、同域名不足以去重。所有输出 key 都以来源 ID 开头，并包含行为指纹，重复 key 不会相互覆盖。相同输入生成相同 key；行为字段/来源全局上下文变化会改变指纹，相关收藏可能需重新选择。
 
 检查成功但内容无变化时，只记录 Actions 检查结果，不提交快照、不重发 Pages、不伪造活动。网页中的最近成功时间是**内容生成时间**；最近检查是否成功、距离上次检查多久，须看 Actions 的真实运行时间。程序版本变化也会生成新版本。可以从 Actions Summary 中看到内容是否发生变化。
 
-GitHub 的 schedule 不保证准点：高负载时可能延迟或跳过，只从默认分支运行，公开仓库长时间无活动（当前文档为 60 天）可能自动停用。不要把它当 100% 永久在线服务。请关注 [Actions 页面](https://github.com/cbdoglolz/fongmi-tvbox-aggregator/actions)，在 GitHub 个人 Settings → Notifications 中启用 Actions 失败通知；这里没有额外创建 Issue 或发送邮件。建议关注最近成功检查是否超过 36 小时；停用后按 GitHub 界面的正常流程重新启用，禁止无意义机器人提交。
+GitHub 的 schedule 不保证准点：高负载时可能延迟或跳过，只从默认分支运行，公开仓库长时间无活动（当前文档为 60 天）可能自动停用。不要把它当 100% 永久在线服务。请关注 [Actions 页面](https://github.com/cbdoglolz/r-33ecd6b4f99d7e11/actions)，在 GitHub 个人 Settings → Notifications 中启用 Actions 失败通知；这里没有额外创建 Issue 或发送邮件。建议关注最近成功检查是否超过 36 小时；停用后按 GitHub 界面的正常流程重新启用，禁止无意义机器人提交。
 
 ## 产物与报告
 
@@ -28,7 +28,7 @@ GitHub 的 schedule 不保证准点：高负载时可能延迟或跳过，只从
 | `report.html` / `index.html` | 可读的简体中文检查报告 |
 | `manifest.json` | 每个最终 key 对应的来源、API、JAR、引擎和原始 key |
 
-Pages 未启用时，在成功 Actions 运行的 Artifacts 下载 `complete-运行ID`，包含 `public/` 和 `.snapshots/版本/`。长期副本在独立 [`snapshots` 分支](https://github.com/cbdoglolz/fongmi-tvbox-aggregator/tree/snapshots)；每个成功版本都是不可变 Git 提交，其 `public/` 可审查，`raw/` 保留四源原始配置及 SHA-256。原始配置快照不放进 Pages artifact。Actions 完整 bundle 保留 90 天，失败诊断保留 30 天；过期后仍可从 snapshots 的 Git 历史恢复，只要不删除该分支/仓库历史。请勿将 snapshots 当默认分支或手工推送生成文件触发其他发布流程。
+Pages 未启用时，在成功 Actions 运行的 Artifacts 下载 `complete-运行ID`，包含 `public/` 和 `.snapshots/版本/`。长期副本在独立 [`snapshots` 分支](https://github.com/cbdoglolz/r-33ecd6b4f99d7e11/tree/snapshots)；每个成功版本都是不可变 Git 提交，其 `public/` 可审查，`raw/` 保留四源原始配置及 SHA-256。原始配置快照不放进 Pages artifact。Actions 完整 bundle 保留 90 天，失败诊断保留 30 天；过期后仍可从 snapshots 的 Git 历史恢复，只要不删除该分支/仓库历史。请勿将 snapshots 当默认分支或手工推送生成文件触发其他发布流程。
 
 报告中的依赖状态明确为“仅记录 URL，未下载、未执行、未审计代码”。`md5` 声明只检查格式，不冒充已验证二进制哈希。`http_references` 记录所有可识别的明文地址（包括嵌入参数），`local_references` 标出站点自身指向本机/内网的行为配置；构建不会主动访问这些地址。
 
@@ -65,17 +65,17 @@ V1 默认只使用任务书指定四源。如之后明确要增加来源，在 `
 
 ## Pages 启用与公开边界
 
-GitHub Pages 对 Free 账号的私有仓库不可用，支持私有仓库 Pages 的套餐见 [GitHub 官方说明](https://docs.github.com/en/pages/getting-started-with-github-pages/creating-a-github-pages-site)。本项目实际 API 已返回套餐限制。继续上线需用户选择升级套餐保留私有代码，或明确同意把这个独立仓库及其快照历史设为公开。**代码私有也不代表 Pages 私有，发布 JSON 和站点列表会公开可读。**
+GitHub Pages 对 Free 账号的私有仓库不可用，支持私有仓库 Pages 的套餐见 [GitHub 官方说明](https://docs.github.com/en/pages/getting-started-with-github-pages/creating-a-github-pages-site)。本项目曾因私有仓库套餐限制无法启用 Pages；现已获得用户明确授权，将独立仓库及快照历史公开。**代码私有也不代表 Pages 私有，发布 JSON 和站点列表会公开可读。**
 
 还须遵守 [GitHub 可接受使用政策](https://docs.github.com/en/site-policy/acceptable-use-policies/github-sexually-obscene-content) 和版权/隐私要求。本工程处理配置，不托管影片、海报、私人影像；第三方站点及执行依赖未经内容或代码安全审计，不得宣称 GitHub 已审核许可。如果具体发布内容被平台政策限制，应停止公开发布，不通过隐藏 URL 或更换仓库规避。
 
 具备相应权限和发布条件后：
 
-1. Repository → Settings → Pages → Source 选择 GitHub Actions（或 `gh api --method POST repos/cbdoglolz/fongmi-tvbox-aggregator/pages -f build_type=workflow`）。
+1. Repository → Settings → Pages → Source 选择 GitHub Actions（或 `gh api --method POST repos/cbdoglolz/r-33ecd6b4f99d7e11/pages -f build_type=workflow`）。
 2. Settings → Secrets and variables → Actions → Variables 设置 `PAGES_ENABLED=true`。
 3. Actions → Run workflow，`restore_snapshot` 填 `snapshots`，发布现存完整成功快照。这个字段也接受 snapshots 历史中明确的 40 位提交 SHA，用于回滚。留空则完整抓取四源。
 4. 工作流直接上传 `public/` 为 Pages artifact，由 deploy-pages 发布；不会依赖机器人提交再次触发 push。
-5. 以 deploy job 返回的真实 page_url 为准；等待 `Verify published JSON and version` 通过后才能把该地址下的 `content.json` 填入 FongMi。当前未启用，不把预计 URL 交付为可用链接。
+5. 以 deploy job 返回的真实 page_url 为准；等待 `Verify published JSON and version` 通过后才能把该地址下的 `content.json` 填入 播放器。正式使用前应以实际 HTTP 验证结果为准。
 
 ## 回滚、恢复和告警
 
@@ -86,7 +86,7 @@ GitHub Pages 对 Free 账号的私有仓库不可用，支持私有仓库 Pages 
 本地恢复示例（须先 `gh auth login`，不要在聊天/命令行粘贴明文 Token）：
 
 ```powershell
-python scripts/snapshot.py recover --repo cbdoglolz/fongmi-tvbox-aggregator --directory .last-good/public
+python scripts/snapshot.py recover --repo cbdoglolz/r-33ecd6b4f99d7e11 --directory .last-good/public
 python build.py --validate .last-good/public
 ```
 

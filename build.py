@@ -1,4 +1,4 @@
-"""Merge untrusted FongMi configuration data. Never loads upstream executable code."""
+"""Merge untrusted configuration data. Never loads upstream executable code."""
 from __future__ import annotations
 
 import argparse
@@ -424,9 +424,9 @@ def render_report(report):
     counts = report['counts']
     rows = ''.join(f'<tr><td>{html.escape(s["source_id"])}</td><td>{s["upstream_sites"]}</td><td>{html.escape(s["used_url"])}</td><td>{s["fallback"]}</td></tr>' for s in report['sources'])
     summary = {k: report[k] for k in ('counts', 'hidden_tools', 'removed_duplicates', 'name_collisions', 'kept_variants', 'global_fields')}
-    return f'''<!doctype html><html lang="zh-CN"><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>FongMi 四源聚合检查报告</title>
+    return f'''<!doctype html><html lang="zh-CN"><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="robots" content="noindex,nofollow,noarchive"><title>配置检查报告</title>
 <style>body{{font:16px system-ui;max-width:1100px;margin:2em auto;padding:1em;line-height:1.7}}table{{border-collapse:collapse;width:100%}}td,th{{border:1px solid #bbb;padding:.5em;overflow-wrap:anywhere}}pre{{white-space:pre-wrap;overflow-wrap:anywhere}}a{{color:#1465b0}}</style>
-<h1>FongMi 四源聚合检查报告</h1><p>版本 {html.escape(report['version'])} · 最近成功生成 {report['last_success_at']}</p>
+<h1>配置检查报告</h1><p>版本 {html.escape(report['version'])} · 最近成功生成 {report['last_success_at']}</p>
 <p>原始 {counts['raw']}，精确去重 {counts['removed']}，全量 {counts['retained']}，内容入口 {counts['content']}。</p>
 <p><a href="content.json">默认订阅 content.json</a> · <a href="tvbox.json">全量 tvbox.json</a> · <a href="report.json">详细报告</a> · <a href="manifest.json">来源清单</a></p>
 <p>仅配置聚合，未执行第三方 JAR/JS/Python，未完成电视首页、搜索或播放测试。内容优先不代表安全审计。全局 hosts/proxy/doh/rules/ijk 等未合并，依赖这些全局设置的站点可能需要进一步适配。本站若发布到 Pages 将公开可读。</p>

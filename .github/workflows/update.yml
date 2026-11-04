@@ -1,4 +1,4 @@
-name: Aggregate and deploy
+name: Refresh
 
 on:
   workflow_dispatch:
@@ -19,7 +19,7 @@ permissions:
   contents: read
 
 concurrency:
-  group: fongmi-aggregate-${{ github.event_name == 'pull_request' && github.ref || 'production' }}
+  group: configuration-refresh-${{ github.event_name == 'pull_request' && github.ref || 'production' }}
   cancel-in-progress: false
 
 jobs:
@@ -66,7 +66,7 @@ jobs:
         env:
           CHANGED: ${{ steps.build.outputs.changed }}
         run: |
-          python -c 'import os; from pathlib import Path; p=Path("build-state.json"); text=p.read_text() if p.exists() else "Restored reviewed snapshot"; Path(os.environ["GITHUB_STEP_SUMMARY"]).write_text("## 聚合检查\n\n```json\n"+text+"\n```\n\n无内容变化时不提交快照、不重发 Pages。Pages 未启用时产物只保留在私有仓库和 Actions。\n")'
+          python -c 'import os; from pathlib import Path; p=Path("build-state.json"); text=p.read_text() if p.exists() else "Restored reviewed snapshot"; Path(os.environ["GITHUB_STEP_SUMMARY"]).write_text("## 配置检查\n\n```json\n"+text+"\n```\n\n无内容变化时不提交快照、不重发 Pages。公开状态以仓库设置为准。\n")'
       - name: Upload complete recoverable bundle
         if: steps.build.outputs.changed == 'true'
         uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02 # v4
