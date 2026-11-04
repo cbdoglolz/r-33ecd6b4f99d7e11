@@ -155,6 +155,7 @@ class MergeTests(unittest.TestCase):
         tv, _, _, report = b.merge([result([site(api='https://a.example/'), site(api='https://b.example/')])])
         self.assertEqual(len(tv['sites']), 2)
         self.assertEqual(len(report['name_collisions']), 1)
+        self.assertEqual(len({s['name'] for s in tv['sites']}), 2)
 
     def test_same_class_different_jar_preserved(self):
         tv, _, _, report = b.merge([result([site()], 'a', './a.jar'), result([site()], 'b', './b.jar')])

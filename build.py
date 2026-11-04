@@ -327,6 +327,18 @@ def merge(results):
                     excluded.append({'key': stable_key, 'name': site['name'], 'reason': tool_reason})
                 entries.append((site, context))
                 seen[fingerprint] = site
+    # Source/engine labels can still collide within one source; add a host/class and short ID.
+    display_groups = {}
+    for site, ctx in entries:
+        display_groups.setdefault(site['name'], []).append((site, ctx))
+    rename_by_key = {r['new_key']: r for r in renames}
+    for group in display_groups.values():
+        if len(group) > 1:
+            for site, ctx in group:
+                label = urllib.parse.urlsplit(site['api']).hostname or site['api'].rsplit('/', 1)[-1]
+                site['name'] += f' · {label}#{ctx["behavior_sha256"][:6]}'
+                ctx['name'] = site['name']
+                rename_by_key[site['key']]['new_name'] = site['name']
     names, variants = {}, {}
     for site, ctx in entries:
         names.setdefault(ctx['original_name'].casefold(), []).append(ctx)
