@@ -1,0 +1,12 @@
+__pycache__/
+*.pyc
+diagnostics/
+public/
+.stage*/
+.last-good/
+.snapshots/
+failure.json
+build-state.json
+.venv/
+.tools/
+pages-verification.json

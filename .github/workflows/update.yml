@@ -1,0 +1,159 @@
+name: Aggregate and deploy
+
+on:
+  workflow_dispatch:
+    inputs:
+      restore_snapshot:
+        description: '可选：snapshots 或该分支历史提交 SHA（不抓取上游）'
+        required: false
+        type: string
+  schedule:
+    - cron: '17 2,14 * * *'
+  push:
+    branches: [main]
+    paths: ['build.py', 'sources.json', 'scripts/**', 'tests/**', '.github/workflows/update.yml']
+  pull_request:
+    branches: [main]
+
+permissions:
+  contents: read
+
+concurrency:
+  group: fongmi-aggregate-${{ github.event_name == 'pull_request' && github.ref || 'production' }}
+  cancel-in-progress: false
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    timeout-minutes: 12
+    outputs:
+      changed: ${{ steps.build.outputs.changed }}
+      version: ${{ steps.build.outputs.version }}
+    steps:
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262 # v4
+        with:
+          persist-credentials: false
+      - uses: actions/setup-python@a26af69be951a213d495a4c3e4e4022e16d87065 # v5
+        with:
+          python-version: '3.12.8'
+      - name: Static checks and regression tests (stdlib only)
+        run: |
+          python -m compileall -q build.py scripts tests
+          python -m unittest discover -s tests -v
+      - name: Restore durable last-good
+        if: github.event_name != 'pull_request'
+        env:
+          GH_TOKEN: ${{ github.token }}
+          RESTORE_REF: ${{ inputs.restore_snapshot || 'snapshots' }}
+        run: python scripts/snapshot.py recover --ref "$RESTORE_REF"
+      - name: Build complete configuration or restore reviewed snapshot
+        if: github.event_name != 'pull_request'
+        id: build
+        env:
+          RESTORE_REF: ${{ inputs.restore_snapshot }}
+        shell: bash
+        run: |
+          if [ -n "$RESTORE_REF" ]; then
+            cp -a .last-good/public public
+            python build.py --validate public
+            echo 'changed=true' >> "$GITHUB_OUTPUT"
+            python -c 'import json,os; r=json.load(open("public/report.json")); f=open(os.environ["GITHUB_OUTPUT"],"a"); f.write("version="+r["version"]+"\n")'
+          else
+            python build.py --last-good .last-good/public
+          fi
+      - name: Show successful check in job summary
+        if: github.event_name != 'pull_request'
+        env:
+          CHANGED: ${{ steps.build.outputs.changed }}
+        run: |
+          python -c 'import os; from pathlib import Path; p=Path("build-state.json"); text=p.read_text() if p.exists() else "Restored reviewed snapshot"; Path(os.environ["GITHUB_STEP_SUMMARY"]).write_text("## 聚合检查\n\n```json\n"+text+"\n```\n\n无内容变化时不提交快照、不重发 Pages。Pages 未启用时产物只保留在私有仓库和 Actions。\n")'
+      - name: Upload complete recoverable bundle
+        if: steps.build.outputs.changed == 'true'
+        uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02 # v4
+        with:
+          name: complete-${{ github.run_id }}
+          path: |
+            public/
+            .snapshots/
+          include-hidden-files: true
+          retention-days: 90
+          if-no-files-found: error
+      - name: Upload Pages artifact
+        if: steps.build.outputs.changed == 'true' && vars.PAGES_ENABLED == 'true'
+        uses: actions/upload-pages-artifact@56afc609e74202658d3ffba0e8f6dda462b719fa # v3
+        with:
+          path: public
+      - name: Save failure details
+        if: failure()
+        uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02 # v4
+        with:
+          name: failure-${{ github.run_id }}
+          path: failure.json
+          retention-days: 30
+          if-no-files-found: ignore
+
+  snapshot:
+    needs: build
+    if: needs.build.outputs.changed == 'true' && !inputs.restore_snapshot && github.event_name != 'pull_request'
+    runs-on: ubuntu-latest
+    timeout-minutes: 8
+    permissions:
+      contents: write
+    steps:
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262 # v4
+        with:
+          persist-credentials: false
+      - uses: actions/setup-python@a26af69be951a213d495a4c3e4e4022e16d87065 # v5
+        with:
+          python-version: '3.12.8'
+      - uses: actions/download-artifact@d3f86a106a0bac45b974a628896c90dbdf5c8093 # v4
+        with:
+          name: complete-${{ github.run_id }}
+          path: .
+      - name: Persist immutable complete snapshot in dedicated branch
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: python scripts/snapshot.py persist
+
+  deploy:
+    needs: [build, snapshot]
+    if: >-
+      always() && needs.build.result == 'success' && needs.build.outputs.changed == 'true' &&
+      (needs.snapshot.result == 'success' || (inputs.restore_snapshot && needs.snapshot.result == 'skipped')) &&
+      vars.PAGES_ENABLED == 'true' && github.event_name != 'pull_request'
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    permissions:
+      contents: read
+      pages: write
+      id-token: write
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - name: Deploy directly to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@d6db90164ac5ed86f2b6aed7e0febac5b3c0c03e # v4
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262 # v4
+        with:
+          persist-credentials: false
+      - uses: actions/setup-python@a26af69be951a213d495a4c3e4e4022e16d87065 # v5
+        with:
+          python-version: '3.12.8'
+      - name: Verify published JSON and version (retry CDN propagation)
+        env:
+          PAGE_URL: ${{ steps.deployment.outputs.page_url }}
+          EXPECTED_VERSION: ${{ needs.build.outputs.version }}
+        run: |
+          for attempt in 1 2 3 4 5 6; do
+            if python scripts/verify_pages.py "$PAGE_URL" --version "$EXPECTED_VERSION"; then exit 0; fi
+            sleep 10
+          done
+          exit 1
+      - name: Save online verification
+        if: always()
+        uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02 # v4
+        with:
+          name: pages-verification-${{ github.run_id }}
+          path: pages-verification.json
+          if-no-files-found: ignore

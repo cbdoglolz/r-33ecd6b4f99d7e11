@@ -1,0 +1,9 @@
+{
+  "schema_version": 1,
+  "sources": [
+    {"id": "clun", "url": "https://clun.top/fun.json", "fallbacks": ["https://raw.githubusercontent.com/cluntop/tvbox/main/fun.json"]},
+    {"id": "wang", "url": "https://raw.githubusercontent.com/wangwanchao1988/TVBox-0/master/9918.json"},
+    {"id": "qist", "url": "https://raw.githubusercontent.com/qist/tvbox/master/9918.json"},
+    {"id": "pray", "url": "https://raw.githubusercontent.com/prayby/TVbox/master/9918.json"}
+  ]
+}
