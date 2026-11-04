@@ -1,10 +1,10 @@
 {
   "schema_version": 1,
   "generator_version": "1.0.0",
-  "version": "5177e24410f43f84d3ccc2aa0031adb3c62404f4cfa8cf81dadd78b4c40be1bb",
-  "commit": "081681cd714895173f821f48bd995eec21115d75",
-  "generated_at": "2026-11-04T12:12:30+00:00",
-  "last_success_at": "2026-11-04T12:12:30+00:00",
+  "version": "d2f79be75f5bb3978a6db57d5bd325c387f5adc46e4cb44f03ad28116bf07093",
+  "commit": "26100657387b57f84d12dbd5bc960cfe22f765b2",
+  "generated_at": "2026-11-04T12:13:20+00:00",
+  "last_success_at": "2026-11-04T12:13:20+00:00",
   "status": "success",
   "sources": [
     {
@@ -12,7 +12,7 @@
       "requested_url": "https://clun.top/fun.json",
       "used_url": "https://clun.top/fun.json",
       "fallback": false,
-      "fetched_at": "2026-11-04T12:12:30+00:00",
+      "fetched_at": "2026-11-04T12:13:20+00:00",
       "upstream_sites": 87,
       "status": "ok",
       "failure_reason": null,
@@ -21,7 +21,7 @@
         {
           "requested_url": "https://clun.top/fun.json",
           "used_url": "https://clun.top/fun.json",
-          "fetched_at": "2026-11-04T12:12:30+00:00",
+          "fetched_at": "2026-11-04T12:13:20+00:00",
           "sha256": "9604c39778b16f08d7339d1d9cb8451f50f627340ed9ab41463f0a610dd95c7b",
           "encoding": "utf-8-sig",
           "upstream_sites": 87
@@ -34,7 +34,7 @@
       "requested_url": "https://raw.githubusercontent.com/wangwanchao1988/TVBox-0/master/9918.json",
       "used_url": "https://raw.githubusercontent.com/wangwanchao1988/TVBox-0/master/9918.json",
       "fallback": false,
-      "fetched_at": "2026-11-04T12:12:30+00:00",
+      "fetched_at": "2026-11-04T12:13:20+00:00",
       "upstream_sites": 93,
       "status": "ok",
       "failure_reason": null,
@@ -43,7 +43,7 @@
         {
           "requested_url": "https://raw.githubusercontent.com/wangwanchao1988/TVBox-0/master/9918.json",
           "used_url": "https://raw.githubusercontent.com/wangwanchao1988/TVBox-0/master/9918.json",
-          "fetched_at": "2026-11-04T12:12:30+00:00",
+          "fetched_at": "2026-11-04T12:13:20+00:00",
           "sha256": "e6b762b519372114b5e8f55489a62d1550c5fa956f257ed47b9403fcd3797d77",
           "encoding": "utf-8-sig",
           "upstream_sites": 93
@@ -56,7 +56,7 @@
       "requested_url": "https://raw.githubusercontent.com/qist/tvbox/master/9918.json",
       "used_url": "https://raw.githubusercontent.com/qist/tvbox/master/9918.json",
       "fallback": false,
-      "fetched_at": "2026-11-04T12:12:30+00:00",
+      "fetched_at": "2026-11-04T12:13:20+00:00",
       "upstream_sites": 61,
       "status": "ok",
       "failure_reason": null,
@@ -65,7 +65,7 @@
         {
           "requested_url": "https://raw.githubusercontent.com/qist/tvbox/master/9918.json",
           "used_url": "https://raw.githubusercontent.com/qist/tvbox/master/9918.json",
-          "fetched_at": "2026-11-04T12:12:30+00:00",
+          "fetched_at": "2026-11-04T12:13:20+00:00",
           "sha256": "0a99c448723d146a4fc5dceca5e11f0c219b87965d8709b2adf6c5ce016d9f3a",
           "encoding": "utf-8-sig",
           "upstream_sites": 61
@@ -78,7 +78,7 @@
       "requested_url": "https://raw.githubusercontent.com/prayby/TVbox/master/9918.json",
       "used_url": "https://raw.githubusercontent.com/prayby/TVbox/master/9918.json",
       "fallback": false,
-      "fetched_at": "2026-11-04T12:12:30+00:00",
+      "fetched_at": "2026-11-04T12:13:20+00:00",
       "upstream_sites": 61,
       "status": "ok",
       "failure_reason": null,
@@ -87,7 +87,7 @@
         {
           "requested_url": "https://raw.githubusercontent.com/prayby/TVbox/master/9918.json",
           "used_url": "https://raw.githubusercontent.com/prayby/TVbox/master/9918.json",
-          "fetched_at": "2026-11-04T12:12:30+00:00",
+          "fetched_at": "2026-11-04T12:13:20+00:00",
           "sha256": "f50b51771164cc9af4b1c8f43d13dad87aaa9c046080fc56eccaa1e3b6e9bca5",
           "encoding": "utf-8-sig",
           "upstream_sites": 61
@@ -588,7 +588,7 @@
           "jar": null,
           "behavior_sha256": "4ae38d8d4a3682b77df46801266c7d4f0d7ac41d33161ff31f8478d210479f5c",
           "key": "clun__AV资源__4ae38d8d4a36",
-          "name": "AV | 采集 [clun/API]",
+          "name": "AV | 采集 [clun/API] · api.souavzy.vip#4ae38d",
           "api": "https://api.souavzy.vip/api.php/provide/vod/at/json",
           "status": "retained",
           "tool_reason": null
@@ -604,7 +604,7 @@
           "jar": null,
           "behavior_sha256": "6bb9d96111bd5739b247d3b773df4ec8665f289c91ef2f9b10462e26ce59fc83",
           "key": "clun__黄AV资源站__6bb9d96111bd",
-          "name": "AV | 采集 [clun/API]",
+          "name": "AV | 采集 [clun/API] · www.pgxdy.com#6bb9d9",
           "api": "https://www.pgxdy.com/api/xml.php",
           "status": "retained",
           "tool_reason": null
@@ -667,45 +667,6 @@
       ]
     },
     {
-      "group_by": "api",
-      "value": "https://caiji.semaozy.net/inc/apijson_vod.php",
-      "different_jars": false,
-      "sites": [
-        {
-          "source_id": "clun",
-          "requested_url": "https://clun.top/fun.json",
-          "used_url": "https://clun.top/fun.json",
-          "original_key": "色猫",
-          "original_name": "色猫 | 采集",
-          "type": 1,
-          "engine": "API",
-          "jar": null,
-          "behavior_sha256": "79ada826f4b6c37a4bf4304a5ba3dd20d10710d9cdaf09ad25d7fab0d1c5f7fe",
-          "key": "clun__色猫__79ada826f4b6",
-          "name": "色猫 | 采集 [clun/API]",
-          "api": "https://caiji.semaozy.net/inc/apijson_vod.php",
-          "status": "retained",
-          "tool_reason": null
-        },
-        {
-          "source_id": "qist",
-          "requested_url": "https://raw.githubusercontent.com/qist/tvbox/master/9918.json",
-          "used_url": "https://raw.githubusercontent.com/qist/tvbox/master/9918.json",
-          "original_key": "semaozy.com",
-          "original_name": "色猫(FQ)",
-          "type": 1,
-          "engine": "API",
-          "jar": null,
-          "behavior_sha256": "7a28ccefa0d48e554bb87b93b7bc6b5be16e61bb1d040a106f412af093716145",
-          "key": "qist__semaozy.com__7a28ccefa0d4",
-          "name": "色猫(FQ) [qist/API]",
-          "api": "https://caiji.semaozy.net/inc/apijson_vod.php",
-          "status": "retained",
-          "tool_reason": null
-        }
-      ]
-    },
-    {
       "group_by": "key",
       "value": "色猫",
       "different_jars": false,
@@ -739,6 +700,45 @@
           "key": "clun__色猫__4bec8cdacf5c",
           "name": "色猫2 | 采集 [clun/API]",
           "api": "https://api.maozyapi.com/inc/apijson_vod.php",
+          "status": "retained",
+          "tool_reason": null
+        }
+      ]
+    },
+    {
+      "group_by": "api",
+      "value": "https://caiji.semaozy.net/inc/apijson_vod.php",
+      "different_jars": false,
+      "sites": [
+        {
+          "source_id": "clun",
+          "requested_url": "https://clun.top/fun.json",
+          "used_url": "https://clun.top/fun.json",
+          "original_key": "色猫",
+          "original_name": "色猫 | 采集",
+          "type": 1,
+          "engine": "API",
+          "jar": null,
+          "behavior_sha256": "79ada826f4b6c37a4bf4304a5ba3dd20d10710d9cdaf09ad25d7fab0d1c5f7fe",
+          "key": "clun__色猫__79ada826f4b6",
+          "name": "色猫 | 采集 [clun/API]",
+          "api": "https://caiji.semaozy.net/inc/apijson_vod.php",
+          "status": "retained",
+          "tool_reason": null
+        },
+        {
+          "source_id": "qist",
+          "requested_url": "https://raw.githubusercontent.com/qist/tvbox/master/9918.json",
+          "used_url": "https://raw.githubusercontent.com/qist/tvbox/master/9918.json",
+          "original_key": "semaozy.com",
+          "original_name": "色猫(FQ)",
+          "type": 1,
+          "engine": "API",
+          "jar": null,
+          "behavior_sha256": "7a28ccefa0d48e554bb87b93b7bc6b5be16e61bb1d040a106f412af093716145",
+          "key": "qist__semaozy.com__7a28ccefa0d4",
+          "name": "色猫(FQ) [qist/API]",
+          "api": "https://caiji.semaozy.net/inc/apijson_vod.php",
           "status": "retained",
           "tool_reason": null
         }
@@ -1684,8 +1684,8 @@
       ]
     },
     {
-      "group_by": "api",
-      "value": "csp_JavBus",
+      "group_by": "name",
+      "value": "javbus",
       "different_jars": true,
       "sites": [
         {
@@ -1794,8 +1794,8 @@
       ]
     },
     {
-      "group_by": "api",
-      "value": "csp_Netflav",
+      "group_by": "name",
+      "value": "netflav",
       "different_jars": true,
       "sites": [
         {
@@ -2036,7 +2036,7 @@
           "jar": null,
           "behavior_sha256": "6bb9d96111bd5739b247d3b773df4ec8665f289c91ef2f9b10462e26ce59fc83",
           "key": "clun__黄AV资源站__6bb9d96111bd",
-          "name": "AV | 采集 [clun/API]",
+          "name": "AV | 采集 [clun/API] · www.pgxdy.com#6bb9d9",
           "api": "https://www.pgxdy.com/api/xml.php",
           "status": "retained",
           "tool_reason": null
@@ -2241,8 +2241,8 @@
       ]
     },
     {
-      "group_by": "api",
-      "value": "csp_NiNi",
+      "group_by": "name",
+      "value": "泥巴",
       "different_jars": true,
       "sites": [
         {
@@ -2406,61 +2406,6 @@
       ]
     },
     {
-      "group_by": "api",
-      "value": "csp_Miss",
-      "different_jars": true,
-      "sites": [
-        {
-          "source_id": "wang",
-          "requested_url": "https://raw.githubusercontent.com/wangwanchao1988/TVBox-0/master/9918.json",
-          "used_url": "https://raw.githubusercontent.com/wangwanchao1988/TVBox-0/master/9918.json",
-          "original_key": "MissAV",
-          "original_name": "MissAV",
-          "type": 3,
-          "engine": "CSP",
-          "jar": "https://raw.githubusercontent.com/wangwanchao1988/TVBox-0/master/jar/custom_spider.jar;md5;ed850893fd0c94513677e7b98cc741a8",
-          "behavior_sha256": "f387c8b43097ff161bf40bced4bf0347c910b10062f00fe7de7d929f3295f695",
-          "key": "wang__MissAV__f387c8b43097",
-          "name": "MissAV [wang/CSP]",
-          "api": "csp_Miss",
-          "status": "retained",
-          "tool_reason": null
-        },
-        {
-          "source_id": "qist",
-          "requested_url": "https://raw.githubusercontent.com/qist/tvbox/master/9918.json",
-          "used_url": "https://raw.githubusercontent.com/qist/tvbox/master/9918.json",
-          "original_key": "MissAV",
-          "original_name": "MissAV",
-          "type": 3,
-          "engine": "CSP",
-          "jar": "https://raw.githubusercontent.com/qist/tvbox/master/jar/pg_upgraded.jar;md5;e58c3a2975d24db4978065ab895cf297",
-          "behavior_sha256": "9e8176c1f5f0e3982b5d58330d87c1eb006c945dd374ad036e286eb054f14c27",
-          "key": "qist__MissAV__9e8176c1f5f0",
-          "name": "MissAV [qist/CSP]",
-          "api": "csp_Miss",
-          "status": "retained",
-          "tool_reason": null
-        },
-        {
-          "source_id": "pray",
-          "requested_url": "https://raw.githubusercontent.com/prayby/TVbox/master/9918.json",
-          "used_url": "https://raw.githubusercontent.com/prayby/TVbox/master/9918.json",
-          "original_key": "MissAV",
-          "original_name": "MissAV",
-          "type": 3,
-          "engine": "CSP",
-          "jar": "https://raw.githubusercontent.com/prayby/TVbox/master/jar/pg.nogo.jar;md5;b6c07235add1a849e772d6fdae004b2a",
-          "behavior_sha256": "476573929f73f6a8f873c364647ecc0692013d1d13a75374577a5d763c068fd4",
-          "key": "pray__MissAV__476573929f73",
-          "name": "MissAV [pray/CSP]",
-          "api": "csp_Miss",
-          "status": "retained",
-          "tool_reason": null
-        }
-      ]
-    },
-    {
       "group_by": "name",
       "value": "missav",
       "different_jars": true,
@@ -2549,6 +2494,61 @@
     },
     {
       "group_by": "api",
+      "value": "csp_Miss",
+      "different_jars": true,
+      "sites": [
+        {
+          "source_id": "wang",
+          "requested_url": "https://raw.githubusercontent.com/wangwanchao1988/TVBox-0/master/9918.json",
+          "used_url": "https://raw.githubusercontent.com/wangwanchao1988/TVBox-0/master/9918.json",
+          "original_key": "MissAV",
+          "original_name": "MissAV",
+          "type": 3,
+          "engine": "CSP",
+          "jar": "https://raw.githubusercontent.com/wangwanchao1988/TVBox-0/master/jar/custom_spider.jar;md5;ed850893fd0c94513677e7b98cc741a8",
+          "behavior_sha256": "f387c8b43097ff161bf40bced4bf0347c910b10062f00fe7de7d929f3295f695",
+          "key": "wang__MissAV__f387c8b43097",
+          "name": "MissAV [wang/CSP]",
+          "api": "csp_Miss",
+          "status": "retained",
+          "tool_reason": null
+        },
+        {
+          "source_id": "qist",
+          "requested_url": "https://raw.githubusercontent.com/qist/tvbox/master/9918.json",
+          "used_url": "https://raw.githubusercontent.com/qist/tvbox/master/9918.json",
+          "original_key": "MissAV",
+          "original_name": "MissAV",
+          "type": 3,
+          "engine": "CSP",
+          "jar": "https://raw.githubusercontent.com/qist/tvbox/master/jar/pg_upgraded.jar;md5;e58c3a2975d24db4978065ab895cf297",
+          "behavior_sha256": "9e8176c1f5f0e3982b5d58330d87c1eb006c945dd374ad036e286eb054f14c27",
+          "key": "qist__MissAV__9e8176c1f5f0",
+          "name": "MissAV [qist/CSP]",
+          "api": "csp_Miss",
+          "status": "retained",
+          "tool_reason": null
+        },
+        {
+          "source_id": "pray",
+          "requested_url": "https://raw.githubusercontent.com/prayby/TVbox/master/9918.json",
+          "used_url": "https://raw.githubusercontent.com/prayby/TVbox/master/9918.json",
+          "original_key": "MissAV",
+          "original_name": "MissAV",
+          "type": 3,
+          "engine": "CSP",
+          "jar": "https://raw.githubusercontent.com/prayby/TVbox/master/jar/pg.nogo.jar;md5;b6c07235add1a849e772d6fdae004b2a",
+          "behavior_sha256": "476573929f73f6a8f873c364647ecc0692013d1d13a75374577a5d763c068fd4",
+          "key": "pray__MissAV__476573929f73",
+          "name": "MissAV [pray/CSP]",
+          "api": "csp_Miss",
+          "status": "retained",
+          "tool_reason": null
+        }
+      ]
+    },
+    {
+      "group_by": "api",
       "value": "csp_Hanime",
       "different_jars": true,
       "sites": [
@@ -2603,8 +2603,8 @@
       ]
     },
     {
-      "group_by": "api",
-      "value": "csp_AList",
+      "group_by": "name",
+      "value": "alist",
       "different_jars": true,
       "sites": [
         {
@@ -2791,8 +2791,8 @@
       ]
     },
     {
-      "group_by": "name",
-      "value": "跑tv",
+      "group_by": "key",
+      "value": "drpy_js_跑tv",
       "different_jars": true,
       "sites": [
         {
@@ -2986,8 +2986,8 @@
       ]
     },
     {
-      "group_by": "key",
-      "value": "jcspcj8.com",
+      "group_by": "api",
+      "value": "http://jcspcj8.com/api?ac=videolist",
       "different_jars": false,
       "sites": [
         {
@@ -3064,45 +3064,6 @@
       ]
     },
     {
-      "group_by": "name",
-      "value": "成人03",
-      "different_jars": false,
-      "sites": [
-        {
-          "source_id": "wang",
-          "requested_url": "https://raw.githubusercontent.com/wangwanchao1988/TVBox-0/master/9918.json",
-          "used_url": "https://raw.githubusercontent.com/wangwanchao1988/TVBox-0/master/9918.json",
-          "original_key": "wmcj8.com",
-          "original_name": "成人03",
-          "type": 0,
-          "engine": "API",
-          "jar": null,
-          "behavior_sha256": "10ad48233d6e9c2bb82c08f241efc03f76fe4604e0d87474545445c84e9b9d61",
-          "key": "wang__wmcj8.com__10ad48233d6e",
-          "name": "成人03 [wang/API]",
-          "api": "http://wmcj8.com/inc/sapi.php",
-          "status": "retained",
-          "tool_reason": null
-        },
-        {
-          "source_id": "pray",
-          "requested_url": "https://raw.githubusercontent.com/prayby/TVbox/master/9918.json",
-          "used_url": "https://raw.githubusercontent.com/prayby/TVbox/master/9918.json",
-          "original_key": "91md.me",
-          "original_name": "成人03",
-          "type": 1,
-          "engine": "API",
-          "jar": null,
-          "behavior_sha256": "9c0823e0baf8fb58cb16c57420ebf82de8e33d5199791e3607ab88c762811471",
-          "key": "pray__91md.me__9c0823e0baf8",
-          "name": "成人03 [pray/API]",
-          "api": "http://91md.me/api.php/provide/vod/",
-          "status": "retained",
-          "tool_reason": null
-        }
-      ]
-    },
-    {
       "group_by": "api",
       "value": "http://wmcj8.com/inc/sapi.php",
       "different_jars": false,
@@ -3143,6 +3104,45 @@
     },
     {
       "group_by": "name",
+      "value": "成人03",
+      "different_jars": false,
+      "sites": [
+        {
+          "source_id": "wang",
+          "requested_url": "https://raw.githubusercontent.com/wangwanchao1988/TVBox-0/master/9918.json",
+          "used_url": "https://raw.githubusercontent.com/wangwanchao1988/TVBox-0/master/9918.json",
+          "original_key": "wmcj8.com",
+          "original_name": "成人03",
+          "type": 0,
+          "engine": "API",
+          "jar": null,
+          "behavior_sha256": "10ad48233d6e9c2bb82c08f241efc03f76fe4604e0d87474545445c84e9b9d61",
+          "key": "wang__wmcj8.com__10ad48233d6e",
+          "name": "成人03 [wang/API]",
+          "api": "http://wmcj8.com/inc/sapi.php",
+          "status": "retained",
+          "tool_reason": null
+        },
+        {
+          "source_id": "pray",
+          "requested_url": "https://raw.githubusercontent.com/prayby/TVbox/master/9918.json",
+          "used_url": "https://raw.githubusercontent.com/prayby/TVbox/master/9918.json",
+          "original_key": "91md.me",
+          "original_name": "成人03",
+          "type": 1,
+          "engine": "API",
+          "jar": null,
+          "behavior_sha256": "9c0823e0baf8fb58cb16c57420ebf82de8e33d5199791e3607ab88c762811471",
+          "key": "pray__91md.me__9c0823e0baf8",
+          "name": "成人03 [pray/API]",
+          "api": "http://91md.me/api.php/provide/vod/",
+          "status": "retained",
+          "tool_reason": null
+        }
+      ]
+    },
+    {
+      "group_by": "name",
       "value": "成人04",
       "different_jars": false,
       "sites": [
@@ -3175,61 +3175,6 @@
           "key": "pray__jcspcj8.com__0eead46d5ef2",
           "name": "成人04 [pray/API]",
           "api": "http://jcspcj8.com/api?ac=videolist",
-          "status": "retained",
-          "tool_reason": null
-        }
-      ]
-    },
-    {
-      "group_by": "key",
-      "value": "91md.me",
-      "different_jars": false,
-      "sites": [
-        {
-          "source_id": "wang",
-          "requested_url": "https://raw.githubusercontent.com/wangwanchao1988/TVBox-0/master/9918.json",
-          "used_url": "https://raw.githubusercontent.com/wangwanchao1988/TVBox-0/master/9918.json",
-          "original_key": "91md.me",
-          "original_name": "成人05",
-          "type": 1,
-          "engine": "API",
-          "jar": null,
-          "behavior_sha256": "9d293b06ae40edc1f69471d41a347aeb5f286ab114f66d902d0a5e12163714c0",
-          "key": "wang__91md.me__9d293b06ae40",
-          "name": "成人05 [wang/API]",
-          "api": "http://91md.me/api.php/provide/vod/",
-          "status": "retained",
-          "tool_reason": null
-        },
-        {
-          "source_id": "qist",
-          "requested_url": "https://raw.githubusercontent.com/qist/tvbox/master/9918.json",
-          "used_url": "https://raw.githubusercontent.com/qist/tvbox/master/9918.json",
-          "original_key": "91md.me",
-          "original_name": "成人07",
-          "type": 1,
-          "engine": "API",
-          "jar": null,
-          "behavior_sha256": "5d15632662d6b9dbfc40b56e025765021ea633cbc84b928735ef147115d8d56f",
-          "key": "qist__91md.me__5d15632662d6",
-          "name": "成人07 [qist/API]",
-          "api": "http://91md.me/api.php/provide/vod/",
-          "status": "retained",
-          "tool_reason": null
-        },
-        {
-          "source_id": "pray",
-          "requested_url": "https://raw.githubusercontent.com/prayby/TVbox/master/9918.json",
-          "used_url": "https://raw.githubusercontent.com/prayby/TVbox/master/9918.json",
-          "original_key": "91md.me",
-          "original_name": "成人03",
-          "type": 1,
-          "engine": "API",
-          "jar": null,
-          "behavior_sha256": "9c0823e0baf8fb58cb16c57420ebf82de8e33d5199791e3607ab88c762811471",
-          "key": "pray__91md.me__9c0823e0baf8",
-          "name": "成人03 [pray/API]",
-          "api": "http://91md.me/api.php/provide/vod/",
           "status": "retained",
           "tool_reason": null
         }
@@ -3285,6 +3230,61 @@
           "key": "pray__bttcj.com__61fcbb42791b",
           "name": "成人05 [pray/API]",
           "api": "http://bttcj.com/inc/sapi.php",
+          "status": "retained",
+          "tool_reason": null
+        }
+      ]
+    },
+    {
+      "group_by": "api",
+      "value": "http://91md.me/api.php/provide/vod/",
+      "different_jars": false,
+      "sites": [
+        {
+          "source_id": "wang",
+          "requested_url": "https://raw.githubusercontent.com/wangwanchao1988/TVBox-0/master/9918.json",
+          "used_url": "https://raw.githubusercontent.com/wangwanchao1988/TVBox-0/master/9918.json",
+          "original_key": "91md.me",
+          "original_name": "成人05",
+          "type": 1,
+          "engine": "API",
+          "jar": null,
+          "behavior_sha256": "9d293b06ae40edc1f69471d41a347aeb5f286ab114f66d902d0a5e12163714c0",
+          "key": "wang__91md.me__9d293b06ae40",
+          "name": "成人05 [wang/API]",
+          "api": "http://91md.me/api.php/provide/vod/",
+          "status": "retained",
+          "tool_reason": null
+        },
+        {
+          "source_id": "qist",
+          "requested_url": "https://raw.githubusercontent.com/qist/tvbox/master/9918.json",
+          "used_url": "https://raw.githubusercontent.com/qist/tvbox/master/9918.json",
+          "original_key": "91md.me",
+          "original_name": "成人07",
+          "type": 1,
+          "engine": "API",
+          "jar": null,
+          "behavior_sha256": "5d15632662d6b9dbfc40b56e025765021ea633cbc84b928735ef147115d8d56f",
+          "key": "qist__91md.me__5d15632662d6",
+          "name": "成人07 [qist/API]",
+          "api": "http://91md.me/api.php/provide/vod/",
+          "status": "retained",
+          "tool_reason": null
+        },
+        {
+          "source_id": "pray",
+          "requested_url": "https://raw.githubusercontent.com/prayby/TVbox/master/9918.json",
+          "used_url": "https://raw.githubusercontent.com/prayby/TVbox/master/9918.json",
+          "original_key": "91md.me",
+          "original_name": "成人03",
+          "type": 1,
+          "engine": "API",
+          "jar": null,
+          "behavior_sha256": "9c0823e0baf8fb58cb16c57420ebf82de8e33d5199791e3607ab88c762811471",
+          "key": "pray__91md.me__9c0823e0baf8",
+          "name": "成人03 [pray/API]",
+          "api": "http://91md.me/api.php/provide/vod/",
           "status": "retained",
           "tool_reason": null
         }
@@ -3518,6 +3518,61 @@
       ]
     },
     {
+      "group_by": "key",
+      "value": "apilj.com",
+      "different_jars": false,
+      "sites": [
+        {
+          "source_id": "wang",
+          "requested_url": "https://raw.githubusercontent.com/wangwanchao1988/TVBox-0/master/9918.json",
+          "used_url": "https://raw.githubusercontent.com/wangwanchao1988/TVBox-0/master/9918.json",
+          "original_key": "apilj.com",
+          "original_name": "成人09",
+          "type": 1,
+          "engine": "API",
+          "jar": null,
+          "behavior_sha256": "3848ccdb040fe1a0a9550e463d5212e4967976a25688c53b8fd588f19596e571",
+          "key": "wang__apilj.com__3848ccdb040f",
+          "name": "成人09 [wang/API]",
+          "api": "http://apilj.com/api.php/provide/vod/at/json/",
+          "status": "retained",
+          "tool_reason": null
+        },
+        {
+          "source_id": "qist",
+          "requested_url": "https://raw.githubusercontent.com/qist/tvbox/master/9918.json",
+          "used_url": "https://raw.githubusercontent.com/qist/tvbox/master/9918.json",
+          "original_key": "apilj.com",
+          "original_name": "成人06",
+          "type": 1,
+          "engine": "API",
+          "jar": null,
+          "behavior_sha256": "e2475fbaf8a564854b0aaba81f5949f8dc25d93f5ddecb8f0e4df5bf56e10fe2",
+          "key": "qist__apilj.com__e2475fbaf8a5",
+          "name": "成人06 [qist/API]",
+          "api": "http://apilj.com/api.php/provide/vod/at/json/",
+          "status": "retained",
+          "tool_reason": null
+        },
+        {
+          "source_id": "pray",
+          "requested_url": "https://raw.githubusercontent.com/prayby/TVbox/master/9918.json",
+          "used_url": "https://raw.githubusercontent.com/prayby/TVbox/master/9918.json",
+          "original_key": "apilj.com",
+          "original_name": "成人01",
+          "type": 1,
+          "engine": "API",
+          "jar": null,
+          "behavior_sha256": "ee5337a851c332ab36c85d800bf8e4cf13531b1d5b50d50df2ef537eb5e65514",
+          "key": "pray__apilj.com__ee5337a851c3",
+          "name": "成人01 [pray/API]",
+          "api": "http://apilj.com/api.php/provide/vod/at/json/",
+          "status": "retained",
+          "tool_reason": null
+        }
+      ]
+    },
+    {
       "group_by": "name",
       "value": "成人09",
       "different_jars": false,
@@ -3567,61 +3622,6 @@
           "key": "pray__llzxcj.com__b7f2338065ea",
           "name": "成人09 [pray/API]",
           "api": "http://llzxcj.com/inc/sck.php?ac=videolist",
-          "status": "retained",
-          "tool_reason": null
-        }
-      ]
-    },
-    {
-      "group_by": "api",
-      "value": "http://apilj.com/api.php/provide/vod/at/json/",
-      "different_jars": false,
-      "sites": [
-        {
-          "source_id": "wang",
-          "requested_url": "https://raw.githubusercontent.com/wangwanchao1988/TVBox-0/master/9918.json",
-          "used_url": "https://raw.githubusercontent.com/wangwanchao1988/TVBox-0/master/9918.json",
-          "original_key": "apilj.com",
-          "original_name": "成人09",
-          "type": 1,
-          "engine": "API",
-          "jar": null,
-          "behavior_sha256": "3848ccdb040fe1a0a9550e463d5212e4967976a25688c53b8fd588f19596e571",
-          "key": "wang__apilj.com__3848ccdb040f",
-          "name": "成人09 [wang/API]",
-          "api": "http://apilj.com/api.php/provide/vod/at/json/",
-          "status": "retained",
-          "tool_reason": null
-        },
-        {
-          "source_id": "qist",
-          "requested_url": "https://raw.githubusercontent.com/qist/tvbox/master/9918.json",
-          "used_url": "https://raw.githubusercontent.com/qist/tvbox/master/9918.json",
-          "original_key": "apilj.com",
-          "original_name": "成人06",
-          "type": 1,
-          "engine": "API",
-          "jar": null,
-          "behavior_sha256": "e2475fbaf8a564854b0aaba81f5949f8dc25d93f5ddecb8f0e4df5bf56e10fe2",
-          "key": "qist__apilj.com__e2475fbaf8a5",
-          "name": "成人06 [qist/API]",
-          "api": "http://apilj.com/api.php/provide/vod/at/json/",
-          "status": "retained",
-          "tool_reason": null
-        },
-        {
-          "source_id": "pray",
-          "requested_url": "https://raw.githubusercontent.com/prayby/TVbox/master/9918.json",
-          "used_url": "https://raw.githubusercontent.com/prayby/TVbox/master/9918.json",
-          "original_key": "apilj.com",
-          "original_name": "成人01",
-          "type": 1,
-          "engine": "API",
-          "jar": null,
-          "behavior_sha256": "ee5337a851c332ab36c85d800bf8e4cf13531b1d5b50d50df2ef537eb5e65514",
-          "key": "pray__apilj.com__ee5337a851c3",
-          "name": "成人01 [pray/API]",
-          "api": "http://apilj.com/api.php/provide/vod/at/json/",
           "status": "retained",
           "tool_reason": null
         }
@@ -3972,6 +3972,45 @@
       ]
     },
     {
+      "group_by": "key",
+      "value": "f2dcj6.com",
+      "different_jars": false,
+      "sites": [
+        {
+          "source_id": "wang",
+          "requested_url": "https://raw.githubusercontent.com/wangwanchao1988/TVBox-0/master/9918.json",
+          "used_url": "https://raw.githubusercontent.com/wangwanchao1988/TVBox-0/master/9918.json",
+          "original_key": "f2dcj6.com",
+          "original_name": "成人16",
+          "type": 0,
+          "engine": "API",
+          "jar": null,
+          "behavior_sha256": "d63acdc11144c7a9799a089b1fa1f65adc1b3d4f97a7f26aa592ee827a3a69ce",
+          "key": "wang__f2dcj6.com__d63acdc11144",
+          "name": "成人16 [wang/API]",
+          "api": "http://f2dcj6.com/sapi?ac=videolist",
+          "status": "retained",
+          "tool_reason": null
+        },
+        {
+          "source_id": "pray",
+          "requested_url": "https://raw.githubusercontent.com/prayby/TVbox/master/9918.json",
+          "used_url": "https://raw.githubusercontent.com/prayby/TVbox/master/9918.json",
+          "original_key": "f2dcj6.com",
+          "original_name": "成人10",
+          "type": 0,
+          "engine": "API",
+          "jar": null,
+          "behavior_sha256": "50bc87346e7dd9a705712969d2e7bf5b15357101b011837ec32199392896fc98",
+          "key": "pray__f2dcj6.com__50bc87346e7d",
+          "name": "成人10 [pray/API]",
+          "api": "http://f2dcj6.com/sapi?ac=videolist",
+          "status": "retained",
+          "tool_reason": null
+        }
+      ]
+    },
+    {
       "group_by": "name",
       "value": "成人16",
       "different_jars": false,
@@ -4005,45 +4044,6 @@
           "key": "pray__msnii.com__f8026d76e697",
           "name": "成人16 [pray/API]",
           "api": "https://www.msnii.com/api/xml.php",
-          "status": "retained",
-          "tool_reason": null
-        }
-      ]
-    },
-    {
-      "group_by": "api",
-      "value": "http://f2dcj6.com/sapi?ac=videolist",
-      "different_jars": false,
-      "sites": [
-        {
-          "source_id": "wang",
-          "requested_url": "https://raw.githubusercontent.com/wangwanchao1988/TVBox-0/master/9918.json",
-          "used_url": "https://raw.githubusercontent.com/wangwanchao1988/TVBox-0/master/9918.json",
-          "original_key": "f2dcj6.com",
-          "original_name": "成人16",
-          "type": 0,
-          "engine": "API",
-          "jar": null,
-          "behavior_sha256": "d63acdc11144c7a9799a089b1fa1f65adc1b3d4f97a7f26aa592ee827a3a69ce",
-          "key": "wang__f2dcj6.com__d63acdc11144",
-          "name": "成人16 [wang/API]",
-          "api": "http://f2dcj6.com/sapi?ac=videolist",
-          "status": "retained",
-          "tool_reason": null
-        },
-        {
-          "source_id": "pray",
-          "requested_url": "https://raw.githubusercontent.com/prayby/TVbox/master/9918.json",
-          "used_url": "https://raw.githubusercontent.com/prayby/TVbox/master/9918.json",
-          "original_key": "f2dcj6.com",
-          "original_name": "成人10",
-          "type": 0,
-          "engine": "API",
-          "jar": null,
-          "behavior_sha256": "50bc87346e7dd9a705712969d2e7bf5b15357101b011837ec32199392896fc98",
-          "key": "pray__f2dcj6.com__50bc87346e7d",
-          "name": "成人10 [pray/API]",
-          "api": "http://f2dcj6.com/sapi?ac=videolist",
           "status": "retained",
           "tool_reason": null
         }
@@ -4089,45 +4089,6 @@
       ]
     },
     {
-      "group_by": "name",
-      "value": "成人18",
-      "different_jars": false,
-      "sites": [
-        {
-          "source_id": "wang",
-          "requested_url": "https://raw.githubusercontent.com/wangwanchao1988/TVBox-0/master/9918.json",
-          "used_url": "https://raw.githubusercontent.com/wangwanchao1988/TVBox-0/master/9918.json",
-          "original_key": "ggmmzy.com",
-          "original_name": "成人18",
-          "type": 0,
-          "engine": "API",
-          "jar": null,
-          "behavior_sha256": "d73cdaab140de291a20867a615b3b59d570a936b3ece697f9fa16570e93f060c",
-          "key": "wang__ggmmzy.com__d73cdaab140d",
-          "name": "成人18 [wang/API]",
-          "api": "http://www.ggmmzy.com:9999/inc/xml",
-          "status": "retained",
-          "tool_reason": null
-        },
-        {
-          "source_id": "pray",
-          "requested_url": "https://raw.githubusercontent.com/prayby/TVbox/master/9918.json",
-          "used_url": "https://raw.githubusercontent.com/prayby/TVbox/master/9918.json",
-          "original_key": "caiji.huakuiapi.com",
-          "original_name": "成人18",
-          "type": 1,
-          "engine": "API",
-          "jar": null,
-          "behavior_sha256": "c459aae6a4cb6360f0c3d4a586cb1f26a93df03148bcd62eacee71706e6f5835",
-          "key": "pray__caiji.huakuiapi.com__c459aae6a4cb",
-          "name": "成人18 [pray/API]",
-          "api": "https://caiji.huakuiapi.com/inc/apijson_vod.php",
-          "status": "retained",
-          "tool_reason": null
-        }
-      ]
-    },
-    {
       "group_by": "api",
       "value": "http://www.ggmmzy.com:9999/inc/xml",
       "different_jars": false,
@@ -4161,6 +4122,45 @@
           "key": "pray__ggmmzy.com__45763d7f5726",
           "name": "成人11 [pray/API]",
           "api": "http://www.ggmmzy.com:9999/inc/xml",
+          "status": "retained",
+          "tool_reason": null
+        }
+      ]
+    },
+    {
+      "group_by": "name",
+      "value": "成人18",
+      "different_jars": false,
+      "sites": [
+        {
+          "source_id": "wang",
+          "requested_url": "https://raw.githubusercontent.com/wangwanchao1988/TVBox-0/master/9918.json",
+          "used_url": "https://raw.githubusercontent.com/wangwanchao1988/TVBox-0/master/9918.json",
+          "original_key": "ggmmzy.com",
+          "original_name": "成人18",
+          "type": 0,
+          "engine": "API",
+          "jar": null,
+          "behavior_sha256": "d73cdaab140de291a20867a615b3b59d570a936b3ece697f9fa16570e93f060c",
+          "key": "wang__ggmmzy.com__d73cdaab140d",
+          "name": "成人18 [wang/API]",
+          "api": "http://www.ggmmzy.com:9999/inc/xml",
+          "status": "retained",
+          "tool_reason": null
+        },
+        {
+          "source_id": "pray",
+          "requested_url": "https://raw.githubusercontent.com/prayby/TVbox/master/9918.json",
+          "used_url": "https://raw.githubusercontent.com/prayby/TVbox/master/9918.json",
+          "original_key": "caiji.huakuiapi.com",
+          "original_name": "成人18",
+          "type": 1,
+          "engine": "API",
+          "jar": null,
+          "behavior_sha256": "c459aae6a4cb6360f0c3d4a586cb1f26a93df03148bcd62eacee71706e6f5835",
+          "key": "pray__caiji.huakuiapi.com__c459aae6a4cb",
+          "name": "成人18 [pray/API]",
+          "api": "https://caiji.huakuiapi.com/inc/apijson_vod.php",
           "status": "retained",
           "tool_reason": null
         }
@@ -4387,47 +4387,8 @@
       ]
     },
     {
-      "group_by": "name",
-      "value": "成人23",
-      "different_jars": false,
-      "sites": [
-        {
-          "source_id": "wang",
-          "requested_url": "https://raw.githubusercontent.com/wangwanchao1988/TVBox-0/master/9918.json",
-          "used_url": "https://raw.githubusercontent.com/wangwanchao1988/TVBox-0/master/9918.json",
-          "original_key": "madouse.la",
-          "original_name": "成人23",
-          "type": 1,
-          "engine": "API",
-          "jar": null,
-          "behavior_sha256": "54a956219920223b7f395faae1867d2807a8374d57fe01b71259c4394f39f1ac",
-          "key": "wang__madouse.la__54a956219920",
-          "name": "成人23 [wang/API]",
-          "api": "http://madouse.la/api.php/provide/vod/",
-          "status": "retained",
-          "tool_reason": null
-        },
-        {
-          "source_id": "pray",
-          "requested_url": "https://raw.githubusercontent.com/prayby/TVbox/master/9918.json",
-          "used_url": "https://raw.githubusercontent.com/prayby/TVbox/master/9918.json",
-          "original_key": "kkzy.me",
-          "original_name": "成人23",
-          "type": 1,
-          "engine": "API",
-          "jar": null,
-          "behavior_sha256": "db069a0434bfa85458305df9526f8a3a8439e196694e156e7ac98601c3727809",
-          "key": "pray__kkzy.me__db069a0434bf",
-          "name": "成人23 [pray/API]",
-          "api": "https://kkzy.me/api.php/provide/vod/",
-          "status": "retained",
-          "tool_reason": null
-        }
-      ]
-    },
-    {
-      "group_by": "api",
-      "value": "http://madouse.la/api.php/provide/vod/",
+      "group_by": "key",
+      "value": "madouse.la",
       "different_jars": false,
       "sites": [
         {
@@ -4475,6 +4436,45 @@
           "key": "pray__madouse.la__830751357dfe",
           "name": "成人13 [pray/API]",
           "api": "http://madouse.la/api.php/provide/vod/",
+          "status": "retained",
+          "tool_reason": null
+        }
+      ]
+    },
+    {
+      "group_by": "name",
+      "value": "成人23",
+      "different_jars": false,
+      "sites": [
+        {
+          "source_id": "wang",
+          "requested_url": "https://raw.githubusercontent.com/wangwanchao1988/TVBox-0/master/9918.json",
+          "used_url": "https://raw.githubusercontent.com/wangwanchao1988/TVBox-0/master/9918.json",
+          "original_key": "madouse.la",
+          "original_name": "成人23",
+          "type": 1,
+          "engine": "API",
+          "jar": null,
+          "behavior_sha256": "54a956219920223b7f395faae1867d2807a8374d57fe01b71259c4394f39f1ac",
+          "key": "wang__madouse.la__54a956219920",
+          "name": "成人23 [wang/API]",
+          "api": "http://madouse.la/api.php/provide/vod/",
+          "status": "retained",
+          "tool_reason": null
+        },
+        {
+          "source_id": "pray",
+          "requested_url": "https://raw.githubusercontent.com/prayby/TVbox/master/9918.json",
+          "used_url": "https://raw.githubusercontent.com/prayby/TVbox/master/9918.json",
+          "original_key": "kkzy.me",
+          "original_name": "成人23",
+          "type": 1,
+          "engine": "API",
+          "jar": null,
+          "behavior_sha256": "db069a0434bfa85458305df9526f8a3a8439e196694e156e7ac98601c3727809",
+          "key": "pray__kkzy.me__db069a0434bf",
+          "name": "成人23 [pray/API]",
+          "api": "https://kkzy.me/api.php/provide/vod/",
           "status": "retained",
           "tool_reason": null
         }
@@ -4575,45 +4575,6 @@
       ]
     },
     {
-      "group_by": "api",
-      "value": "http://www.feifei67.com/api.php/provide/vod/",
-      "different_jars": false,
-      "sites": [
-        {
-          "source_id": "wang",
-          "requested_url": "https://raw.githubusercontent.com/wangwanchao1988/TVBox-0/master/9918.json",
-          "used_url": "https://raw.githubusercontent.com/wangwanchao1988/TVBox-0/master/9918.json",
-          "original_key": "feifei67.com",
-          "original_name": "成人26",
-          "type": 1,
-          "engine": "API",
-          "jar": null,
-          "behavior_sha256": "df00a9c52b3b76a5e2cd49186e80048f156e0442e6397822e4bfdee15677f96d",
-          "key": "wang__feifei67.com__df00a9c52b3b",
-          "name": "成人26 [wang/API]",
-          "api": "http://www.feifei67.com/api.php/provide/vod/",
-          "status": "retained",
-          "tool_reason": null
-        },
-        {
-          "source_id": "pray",
-          "requested_url": "https://raw.githubusercontent.com/prayby/TVbox/master/9918.json",
-          "used_url": "https://raw.githubusercontent.com/prayby/TVbox/master/9918.json",
-          "original_key": "feifei67.com",
-          "original_name": "成人08",
-          "type": 1,
-          "engine": "API",
-          "jar": null,
-          "behavior_sha256": "80121672fffb3d27c4ce874ba80b265116ee172203b3512a68858406bc1f2583",
-          "key": "pray__feifei67.com__80121672fffb",
-          "name": "成人08 [pray/API]",
-          "api": "http://www.feifei67.com/api.php/provide/vod/",
-          "status": "retained",
-          "tool_reason": null
-        }
-      ]
-    },
-    {
       "group_by": "name",
       "value": "成人26",
       "different_jars": false,
@@ -4663,6 +4624,45 @@
           "key": "pray__lbapi9.com__2cdfa2cb3ee4",
           "name": "成人26 [pray/API]",
           "api": "https://lbapi9.com/api.php/provide/vod/",
+          "status": "retained",
+          "tool_reason": null
+        }
+      ]
+    },
+    {
+      "group_by": "api",
+      "value": "http://www.feifei67.com/api.php/provide/vod/",
+      "different_jars": false,
+      "sites": [
+        {
+          "source_id": "wang",
+          "requested_url": "https://raw.githubusercontent.com/wangwanchao1988/TVBox-0/master/9918.json",
+          "used_url": "https://raw.githubusercontent.com/wangwanchao1988/TVBox-0/master/9918.json",
+          "original_key": "feifei67.com",
+          "original_name": "成人26",
+          "type": 1,
+          "engine": "API",
+          "jar": null,
+          "behavior_sha256": "df00a9c52b3b76a5e2cd49186e80048f156e0442e6397822e4bfdee15677f96d",
+          "key": "wang__feifei67.com__df00a9c52b3b",
+          "name": "成人26 [wang/API]",
+          "api": "http://www.feifei67.com/api.php/provide/vod/",
+          "status": "retained",
+          "tool_reason": null
+        },
+        {
+          "source_id": "pray",
+          "requested_url": "https://raw.githubusercontent.com/prayby/TVbox/master/9918.json",
+          "used_url": "https://raw.githubusercontent.com/prayby/TVbox/master/9918.json",
+          "original_key": "feifei67.com",
+          "original_name": "成人08",
+          "type": 1,
+          "engine": "API",
+          "jar": null,
+          "behavior_sha256": "80121672fffb3d27c4ce874ba80b265116ee172203b3512a68858406bc1f2583",
+          "key": "pray__feifei67.com__80121672fffb",
+          "name": "成人08 [pray/API]",
+          "api": "http://www.feifei67.com/api.php/provide/vod/",
           "status": "retained",
           "tool_reason": null
         }
@@ -4896,45 +4896,6 @@
       ]
     },
     {
-      "group_by": "api",
-      "value": "https://www.afasu.com/api/xml.php",
-      "different_jars": false,
-      "sites": [
-        {
-          "source_id": "wang",
-          "requested_url": "https://raw.githubusercontent.com/wangwanchao1988/TVBox-0/master/9918.json",
-          "used_url": "https://raw.githubusercontent.com/wangwanchao1988/TVBox-0/master/9918.json",
-          "original_key": "afasu.com",
-          "original_name": "成人37",
-          "type": 0,
-          "engine": "API",
-          "jar": null,
-          "behavior_sha256": "748518ff81335d8f48a3c7b2207b3942a992a8bb8d2bca4fc44a8dcbd6e83d7b",
-          "key": "wang__afasu.com__748518ff8133",
-          "name": "成人37 [wang/API]",
-          "api": "https://www.afasu.com/api/xml.php",
-          "status": "retained",
-          "tool_reason": null
-        },
-        {
-          "source_id": "pray",
-          "requested_url": "https://raw.githubusercontent.com/prayby/TVbox/master/9918.json",
-          "used_url": "https://raw.githubusercontent.com/prayby/TVbox/master/9918.json",
-          "original_key": "afasu.com",
-          "original_name": "成人22",
-          "type": 0,
-          "engine": "API",
-          "jar": null,
-          "behavior_sha256": "fdab9da57169a4f404ca61d53482ef336dcfab27f506553faeb3fe216cc2eae1",
-          "key": "pray__afasu.com__fdab9da57169",
-          "name": "成人22 [pray/API]",
-          "api": "https://www.afasu.com/api/xml.php",
-          "status": "retained",
-          "tool_reason": null
-        }
-      ]
-    },
-    {
       "group_by": "key",
       "value": "afasu.com",
       "different_jars": false,
@@ -4968,6 +4929,45 @@
           "key": "qist__afasu.com__3e4a4b35670b",
           "name": "成人25 [qist/API]",
           "api": "http://www.afasu.com/api/xml.php",
+          "status": "retained",
+          "tool_reason": null
+        },
+        {
+          "source_id": "pray",
+          "requested_url": "https://raw.githubusercontent.com/prayby/TVbox/master/9918.json",
+          "used_url": "https://raw.githubusercontent.com/prayby/TVbox/master/9918.json",
+          "original_key": "afasu.com",
+          "original_name": "成人22",
+          "type": 0,
+          "engine": "API",
+          "jar": null,
+          "behavior_sha256": "fdab9da57169a4f404ca61d53482ef336dcfab27f506553faeb3fe216cc2eae1",
+          "key": "pray__afasu.com__fdab9da57169",
+          "name": "成人22 [pray/API]",
+          "api": "https://www.afasu.com/api/xml.php",
+          "status": "retained",
+          "tool_reason": null
+        }
+      ]
+    },
+    {
+      "group_by": "api",
+      "value": "https://www.afasu.com/api/xml.php",
+      "different_jars": false,
+      "sites": [
+        {
+          "source_id": "wang",
+          "requested_url": "https://raw.githubusercontent.com/wangwanchao1988/TVBox-0/master/9918.json",
+          "used_url": "https://raw.githubusercontent.com/wangwanchao1988/TVBox-0/master/9918.json",
+          "original_key": "afasu.com",
+          "original_name": "成人37",
+          "type": 0,
+          "engine": "API",
+          "jar": null,
+          "behavior_sha256": "748518ff81335d8f48a3c7b2207b3942a992a8bb8d2bca4fc44a8dcbd6e83d7b",
+          "key": "wang__afasu.com__748518ff8133",
+          "name": "成人37 [wang/API]",
+          "api": "https://www.afasu.com/api/xml.php",
           "status": "retained",
           "tool_reason": null
         },
@@ -5194,8 +5194,8 @@
       ]
     },
     {
-      "group_by": "api",
-      "value": "csp_Push",
+      "group_by": "name",
+      "value": "推送",
       "different_jars": true,
       "sites": [
         {
@@ -5570,8 +5570,8 @@
       ]
     },
     {
-      "group_by": "key",
-      "value": "drpy_js_朱古力",
+      "group_by": "name",
+      "value": "朱古力",
       "different_jars": true,
       "sites": [
         {
@@ -5648,7 +5648,7 @@
       ]
     },
     {
-      "group_by": "key",
+      "group_by": "name",
       "value": "量子",
       "different_jars": false,
       "sites": [
@@ -5687,7 +5687,7 @@
       ]
     },
     {
-      "group_by": "name",
+      "group_by": "key",
       "value": "非凡",
       "different_jars": false,
       "sites": [
@@ -5726,7 +5726,7 @@
       ]
     },
     {
-      "group_by": "key",
+      "group_by": "name",
       "value": "玉兔资源",
       "different_jars": false,
       "sites": [
@@ -6009,7 +6009,7 @@
           "jar": null,
           "behavior_sha256": "4ae38d8d4a3682b77df46801266c7d4f0d7ac41d33161ff31f8478d210479f5c",
           "key": "clun__AV资源__4ae38d8d4a36",
-          "name": "AV | 采集 [clun/API]",
+          "name": "AV | 采集 [clun/API] · api.souavzy.vip#4ae38d",
           "api": "https://api.souavzy.vip/api.php/provide/vod/at/json",
           "status": "retained",
           "tool_reason": null
@@ -6025,7 +6025,7 @@
           "jar": null,
           "behavior_sha256": "6bb9d96111bd5739b247d3b773df4ec8665f289c91ef2f9b10462e26ce59fc83",
           "key": "clun__黄AV资源站__6bb9d96111bd",
-          "name": "AV | 采集 [clun/API]",
+          "name": "AV | 采集 [clun/API] · www.pgxdy.com#6bb9d9",
           "api": "https://www.pgxdy.com/api/xml.php",
           "status": "retained",
           "tool_reason": null
@@ -8388,7 +8388,7 @@
       "old_key": "AV资源",
       "new_key": "clun__AV资源__4ae38d8d4a36",
       "old_name": "AV | 采集",
-      "new_name": "AV | 采集 [clun/API]"
+      "new_name": "AV | 采集 [clun/API] · api.souavzy.vip#4ae38d"
     },
     {
       "source_id": "clun",
@@ -8668,7 +8668,7 @@
       "old_key": "黄AV资源站",
       "new_key": "clun__黄AV资源站__6bb9d96111bd",
       "old_name": "AV | 采集",
-      "new_name": "AV | 采集 [clun/API]"
+      "new_name": "AV | 采集 [clun/API] · www.pgxdy.com#6bb9d9"
     },
     {
       "source_id": "clun",
@@ -12204,8 +12204,8 @@
     "playback": "not tested"
   },
   "file_sha256": {
-    "tvbox.json": "4f46f9cd50c548f25358e06814b50a74a1a576981aaed42d8179ccfe5a4da13f",
-    "content.json": "db0a22b77add6904441cdbbf468db19d4d97bafa281fed1cfab362ca182ea4bf",
-    "manifest.json": "c26505589935c7e91c3f6729a0ace08ad357536f6270427f947db046087cd3cd"
+    "tvbox.json": "75319ce3f3248f068e0850957b4f7597749c6d83625484644c37fd0e5d8e88f0",
+    "content.json": "17bbe4c97d290cc6dce635306c0e97b1aa8984b11414673d82f476907b05aa10",
+    "manifest.json": "e646a40dc580e8ac188c6a3368cd839b19f3a92eafd8e9306d33b796a5b0de9b"
   }
 }

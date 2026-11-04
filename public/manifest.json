@@ -1,5 +1,5 @@
 {
-  "version": "5177e24410f43f84d3ccc2aa0031adb3c62404f4cfa8cf81dadd78b4c40be1bb",
+  "version": "d2f79be75f5bb3978a6db57d5bd325c387f5adc46e4cb44f03ad28116bf07093",
   "sites": [
     {
       "source_id": "clun",
@@ -540,7 +540,7 @@
       "jar": null,
       "behavior_sha256": "4ae38d8d4a3682b77df46801266c7d4f0d7ac41d33161ff31f8478d210479f5c",
       "key": "clun__AV资源__4ae38d8d4a36",
-      "name": "AV | 采集 [clun/API]",
+      "name": "AV | 采集 [clun/API] · api.souavzy.vip#4ae38d",
       "api": "https://api.souavzy.vip/api.php/provide/vod/at/json",
       "status": "retained",
       "tool_reason": null
@@ -1180,7 +1180,7 @@
       "jar": null,
       "behavior_sha256": "6bb9d96111bd5739b247d3b773df4ec8665f289c91ef2f9b10462e26ce59fc83",
       "key": "clun__黄AV资源站__6bb9d96111bd",
-      "name": "AV | 采集 [clun/API]",
+      "name": "AV | 采集 [clun/API] · www.pgxdy.com#6bb9d9",
       "api": "https://www.pgxdy.com/api/xml.php",
       "status": "retained",
       "tool_reason": null
